@@ -78,6 +78,7 @@ def process_assistant_chat(
         "FACILITY_SEARCH",
         "MEMBERSHIP_SUMMARY",
         "EMERGENCY",
+        "MEDICAL_INQUIRY",
         "SECURITY_INQUIRY",
     }
 

@@ -70,7 +70,7 @@ class AdapterSafetyTest(unittest.TestCase):
             self.assertNotIn(private.lower(),kwargs['contents'].lower())
         self.assertEqual(kwargs['config'].response_mime_type,'application/json')
         self.assertIsNotNone(kwargs['config'].response_json_schema)
-        self.assertEqual(factory.call_args.kwargs['http_options'].timeout,8000)
+        self.assertEqual(factory.call_args.kwargs['http_options'].timeout,10000)
         self.assertEqual(factory.call_args.kwargs['http_options'].retry_options.attempts,1)
 
     def test_api_failure_and_timeout_fallback(self):
@@ -78,7 +78,11 @@ class AdapterSafetyTest(unittest.TestCase):
             provider=GeminiAIProvider('test','model')
             with patch.object(provider,'_request',side_effect=error):
                 self.assertEqual(provider.classify_intent('Berapa tarif iuran?'),'CONTRIBUTION_GUIDE')
-                self.assertIn('Rp50.000',provider.generate_response('tarif','CONTRIBUTION_GUIDE'))
+            with patch('app.services.assistant_service.get_ai_provider', return_value=provider), \
+                    patch('google.genai.Client', side_effect=error):
+                result, status = process_assistant_chat('Berapa tarif iuran?')
+            self.assertEqual(status, 200)
+            self.assertIn('Rp50.000', result['message'])
 
     def test_sdk_error_is_not_logged(self):
         provider=GeminiAIProvider('test','model')
@@ -172,9 +176,11 @@ class AdapterSafetyTest(unittest.TestCase):
             data,status=process_assistant_chat('Cari klinik di Lamongan')
         self.assertEqual(status,200);self.assertEqual([x['id'] for x in data['facilities']],[f.id]);self.assertIsNone(data['facilities'][0]['latitude'])
 
-    def test_history_and_app_context_never_sent(self):
-        provider=GeminiAIProvider('test','model')
-        self.assertEqual(provider.build_context([{'role':'user','content':'private'}],{'password':'private'}),[])
+    def test_gemini_history_is_bounded_and_app_context_excluded(self):
+        provider = GeminiAIProvider('test', 'model')
+        history = [{'role': 'user', 'content': str(i)} for i in range(10)]
+        self.assertEqual(provider.build_context(history, {'password': 'private'}), history[-6:])
+        self.assertEqual(provider.build_context({'invalid': 'history'}), [])
 
     def test_redaction_numeric_ids_and_opaque_tokens(self):
         text=redact_sensitive('3524 1234 5678 9012 SW-2026-ABCDEFGH email@domain.com abcdefghijklmnopqrstuvwxyz0123456789')
