@@ -2026,3 +2026,30 @@ body::before { z-index:1;opacity:.16; }
   .ambient-mesh,.ambient-aurora,.ambient-orbit,.ambient-perspective-grid { animation:none!important; }.ambient-world { background:linear-gradient(125deg,#e8f7f3,#eef2fb 42%,#f8eef7 72%,#fff5e7); }
 }
 @media print { .ambient-world { display:none!important; } body { background:white!important; } }
+
+/* Static mobile scenes: keep the existing geometry, gradients and decorations.
+   Pausing preserves negative-delay poses without ending at transparent keyframes. */
+@media (max-width:768px), (prefers-reduced-motion:reduce) {
+  .ambient-mesh,.ambient-aurora,.ambient-orbit,.ambient-perspective-grid,
+  .hero-ambient,.eyebrow-dot,.health-orbit,.health-orbit::before,.health-orbit::after,
+  .orbit-ring,.orbit-core,.orbit-core::before,.orbit-core::after,.orbit-node,
+  .orbit-node::after,.orbit-status span,.hero-highlight,.energy-shards i,
+  .mini-map,.mini-map::after,.map-pin,.map-radar,.dashboard-header::before,
+  .summary-panel,.auth-card::before {
+    animation-play-state:paused !important;
+    will-change:auto;
+  }
+}
+/* Retain all decorative layers for reduced motion, too. */
+@media (prefers-reduced-motion:reduce) {
+  .motion-canvas,.energy-shards { display:block !important; }
+  .hero-highlight {
+    background:linear-gradient(90deg,var(--color-accent),var(--color-blue),var(--color-violet),var(--color-coral),var(--color-accent));
+    background-size:300% auto;background-clip:text;-webkit-background-clip:text;color:transparent;
+    animation:none !important;
+  }
+}
+html.page-hidden *,html.page-hidden *::before,html.page-hidden *::after {
+  animation-play-state:paused !important;
+}
+@media print { .motion-canvas,.energy-shards { display:none !important; } }

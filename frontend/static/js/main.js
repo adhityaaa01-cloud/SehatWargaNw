@@ -1,4 +1,49 @@
+// Shared, one-shot map loading; CSS reserves the existing map dimensions.
+window.SehatWarga = (() => {
+  let leafletPromise;
+  function loadMapLibrary() {
+    if (window.L) return Promise.resolve(window.L);
+    if (!leafletPromise) {
+      leafletPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+        script.crossOrigin = '';
+        script.onload = () => resolve(window.L);
+        script.onerror = () => {
+          script.remove();
+          leafletPromise = undefined;
+          reject(new Error('Map library unavailable'));
+        };
+        document.head.append(script);
+      });
+    }
+    return leafletPromise;
+  }
+  function whenNearViewport(element, callback) {
+    let observer;
+    let started = false;
+    const cancel = () => { started = true; observer?.disconnect(); };
+    const start = () => {
+      if (started || !element.isConnected) return;
+      started = true;
+      observer?.disconnect();
+      callback();
+    };
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) start();
+      }, { rootMargin: '200px' });
+      observer.observe(element);
+    } else start();
+    return { start, cancel };
+  }
+  return { loadMapLibrary, whenNearViewport };
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+  if (document.documentElement.dataset.mainInitialized) return;
+  document.documentElement.dataset.mainInitialized = 'true';
   const nav = document.getElementById('site-navigation');
   const toggle = document.getElementById('nav-toggle');
   const close = document.getElementById('nav-close');
@@ -59,21 +104,68 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
   window.addEventListener('pageshow',()=>document.querySelectorAll('form[data-submitting]').forEach(form=> {delete form.dataset.submitting; form.removeAttribute('aria-busy'); form.querySelectorAll('button[data-label]').forEach(b=>{b.disabled=false;b.textContent=b.dataset.label;});}));
 
-  // Visual motion is progressive enhancement: content remains visible without JS.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const staticMobile = window.matchMedia('(max-width: 768px)');
+  const finePointer = window.matchMedia('(pointer: fine)');
+  const pointerMotionAllowed = () => !document.hidden && !staticMobile.matches &&
+    !reducedMotion.matches && finePointer.matches;
+
+  // Batch geometry reads before style writes, at most once per animation frame.
+  const frameJobs = new Map();
+  let inputFrame = 0;
+  let frameBounds = new Map();
+  const boundsFor = element => {
+    if (!frameBounds.has(element)) frameBounds.set(element, element.getBoundingClientRect());
+    return frameBounds.get(element);
+  };
+  const flushInput = () => {
+    inputFrame = 0;
+    const jobs = [...frameJobs.values()];
+    frameJobs.clear();
+    const writes = jobs.map(read => read());
+    writes.forEach(write => write?.());
+    frameBounds.clear();
+  };
+  const scheduleInput = (key, read) => {
+    if (document.hidden) return;
+    frameJobs.set(key, read);
+    if (!inputFrame) inputFrame = requestAnimationFrame(flushInput);
+  };
+  const pointerResets = [];
+  const pointerEffect = (element, read, reset) => {
+    const key = {};
+    element.addEventListener('pointermove', event => {
+      if (pointerMotionAllowed()) scheduleInput(key, () => pointerMotionAllowed() ? read(event) : null);
+    }, { passive: true });
+    if (reset) {
+      const clear = () => { frameJobs.delete(key); reset(); };
+      pointerResets.push(clear);
+      element.addEventListener('pointerleave', clear, { passive: true });
+    }
+  };
+  const debounce = (callback, delay = 120) => {
+    let timer;
+    return () => { clearTimeout(timer); timer = setTimeout(callback, delay); };
+  };
   const progressBar = document.getElementById('scroll-progress-bar');
-  let scrollFrame = 0;
   const updateProgress = () => {
-    scrollFrame = 0;
     if (!progressBar) return;
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const progress = scrollable > 0 ? Math.min(1, window.scrollY / scrollable) : 0;
-    progressBar.style.transform = `scaleX(${progress})`;
+    return () => { progressBar.style.transform = `scaleX(${progress})`; };
   };
-  window.addEventListener('scroll', () => {
-    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateProgress);
-  }, { passive: true });
-  updateProgress();
+  window.addEventListener('scroll', () => scheduleInput(progressBar, updateProgress), { passive: true });
+  updateProgress()?.();
+  const syncVisibility = () => {
+    document.documentElement.classList.toggle('page-hidden', document.hidden);
+    if (document.hidden) {
+      cancelAnimationFrame(inputFrame);
+      inputFrame = 0;
+      frameJobs.clear();
+    } else scheduleInput(progressBar, updateProgress);
+  };
+  document.addEventListener('visibilitychange', syncVisibility);
+  syncVisibility();
 
   const revealTargets = document.querySelectorAll([
     '.service-tile', '.feature-card', '.steps-grid li', '.facility-spotlight .split-panel',
@@ -83,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!reducedMotion.matches && 'IntersectionObserver' in window) {
     document.documentElement.classList.add('reveal-ready');
     revealTargets.forEach((element, index) => {
+      if (element.getBoundingClientRect().top < window.innerHeight) element.classList.add('is-visible');
       element.classList.add('reveal-item');
       element.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 65}ms`);
     });
@@ -96,43 +189,41 @@ document.addEventListener('DOMContentLoaded', () => {
     revealTargets.forEach(element => revealObserver.observe(element));
   }
 
-  const finePointer = window.matchMedia('(pointer: fine)').matches;
   const ambientWorld = document.getElementById('ambient-world');
-  if (ambientWorld && finePointer && !reducedMotion.matches) {
-    let ambientFrame = 0;
-    let ambientX = 50;
-    let ambientY = 35;
-    document.addEventListener('pointermove', event => {
-      ambientX = event.clientX / window.innerWidth * 100;
-      ambientY = event.clientY / window.innerHeight * 100;
-      if (ambientFrame) return;
-      ambientFrame = requestAnimationFrame(() => {
+  if (ambientWorld) {
+    pointerEffect(document, event => {
+      const ambientX = event.clientX / window.innerWidth * 100;
+      const ambientY = event.clientY / window.innerHeight * 100;
+      return () => {
         document.body.style.setProperty('--bg-pointer-x', `${ambientX.toFixed(1)}%`);
         document.body.style.setProperty('--bg-pointer-y', `${ambientY.toFixed(1)}%`);
         ambientWorld.style.setProperty('--ambient-shift-x', `${((ambientX - 50) * .08).toFixed(2)}px`);
         ambientWorld.style.setProperty('--ambient-shift-y', `${((ambientY - 50) * .06).toFixed(2)}px`);
-        ambientFrame = 0;
-      });
-    }, { passive: true });
+      };
+    }, () => {
+      document.body.style.removeProperty('--bg-pointer-x');
+      document.body.style.removeProperty('--bg-pointer-y');
+      ambientWorld.style.removeProperty('--ambient-shift-x');
+      ambientWorld.style.removeProperty('--ambient-shift-y');
+    });
   }
   const tiltTargets = document.querySelectorAll([
     '[data-tilt]', '.stat-card', '.action-card', '.facility-card', '.profile-card',
     '.auth-card', '.service-tile', '.secondary-details'
   ].join(','));
   tiltTargets.forEach(card => {
-    if (reducedMotion.matches || !finePointer) return;
-    card.classList.add('fx-tilt');
-    card.addEventListener('pointermove', event => {
-      const bounds = card.getBoundingClientRect();
+    pointerEffect(card, event => {
+      const bounds = boundsFor(card);
       const x = (event.clientX - bounds.left) / bounds.width - 0.5;
       const y = (event.clientY - bounds.top) / bounds.height - 0.5;
       const intensity = card.matches('.health-orbit,.mini-map') ? 10 : 5;
-      card.style.setProperty('--tilt-x', `${(-y * intensity).toFixed(2)}deg`);
-      card.style.setProperty('--tilt-y', `${(x * intensity).toFixed(2)}deg`);
-      card.style.setProperty('--spot-x', `${((x + .5) * 100).toFixed(1)}%`);
-      card.style.setProperty('--spot-y', `${((y + .5) * 100).toFixed(1)}%`);
-    });
-    card.addEventListener('pointerleave', () => {
+      return () => {
+        card.style.setProperty('--tilt-x', `${(-y * intensity).toFixed(2)}deg`);
+        card.style.setProperty('--tilt-y', `${(x * intensity).toFixed(2)}deg`);
+        card.style.setProperty('--spot-x', `${((x + .5) * 100).toFixed(1)}%`);
+        card.style.setProperty('--spot-y', `${((y + .5) * 100).toFixed(1)}%`);
+      };
+    }, () => {
       card.style.setProperty('--tilt-x', '0deg');
       card.style.setProperty('--tilt-y', '0deg');
     });
@@ -140,25 +231,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Magnetic primary actions. The displacement is intentionally small enough
   // that the target never escapes the pointer or changes the document layout.
-  if (!reducedMotion.matches && finePointer) {
+  {
     document.querySelectorAll('.btn-primary,.assistant-floating-btn').forEach(button => {
-      button.classList.add('fx-magnetic');
-      button.addEventListener('pointermove', event => {
-        const bounds = button.getBoundingClientRect();
+      pointerEffect(button, event => {
+        const bounds = boundsFor(button);
         const x = event.clientX - bounds.left - bounds.width / 2;
         const y = event.clientY - bounds.top - bounds.height / 2;
-        button.style.setProperty('--magnetic-x', `${(x * .11).toFixed(1)}px`);
-        button.style.setProperty('--magnetic-y', `${(y * .14).toFixed(1)}px`);
-      });
-      button.addEventListener('pointerleave', () => {
+        return () => {
+          button.style.setProperty('--magnetic-x', `${(x * .11).toFixed(1)}px`);
+          button.style.setProperty('--magnetic-y', `${(y * .14).toFixed(1)}px`);
+        };
+      }, () => {
         button.style.setProperty('--magnetic-x', '0px');
         button.style.setProperty('--magnetic-y', '0px');
       });
     });
   }
 
+  const syncPointerMotion = () => {
+    // These classes also style surfaces; retain them on fine-pointer mobile widths.
+    const enabled = !reducedMotion.matches && finePointer.matches;
+    tiltTargets.forEach(card => card.classList.toggle('fx-tilt', enabled));
+    document.querySelectorAll('.btn-primary,.assistant-floating-btn').forEach(button =>
+      button.classList.toggle('fx-magnetic', enabled));
+    if (!pointerMotionAllowed()) pointerResets.forEach(reset => reset());
+  };
+  [staticMobile, reducedMotion, finePointer].forEach(query => query.addEventListener('change', syncPointerMotion));
+  syncPointerMotion();
+
   const addEnergyShards = (surface, amount) => {
-    if (!surface || reducedMotion.matches) return;
+    if (!surface) return;
     surface.classList.add('fx-energy-field');
     const layer = document.createElement('div');
     layer.className = 'energy-shards';
@@ -182,20 +284,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Lightweight particle network for the public hero. It pauses automatically
   // when the hero leaves the viewport and caps pixel density for modest GPUs.
   const hero = document.querySelector('.hero-section');
-  if (hero && !reducedMotion.matches) {
+  if (hero) {
     const canvas = document.createElement('canvas');
     canvas.className = 'motion-canvas';
     canvas.setAttribute('aria-hidden', 'true');
     hero.prepend(canvas);
     const context = canvas.getContext('2d', { alpha: true });
+    if (!context) return;
     const particleColors = ['12,155,135','50,117,216','233,103,90','231,166,43','115,89,201'];
     let particles = [];
-    let active = true;
+    let intersecting = true;
+    let width = 0;
+    let height = 0;
+    const canAnimate = () => intersecting && !document.hidden && !staticMobile.matches && !reducedMotion.matches;
     let canvasFrame = 0;
     let pointerX = .5;
     let pointerY = .5;
     const resizeCanvas = () => {
       const bounds = hero.getBoundingClientRect();
+      width = bounds.width;
+      height = bounds.height;
       const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = Math.max(1, Math.round(bounds.width * ratio));
       canvas.height = Math.max(1, Math.round(bounds.height * ratio));
@@ -213,13 +321,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }));
     };
     const drawNetwork = () => {
-      if (!active) { canvasFrame = 0; return; }
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
+      canvasFrame = 0;
+      const animate = canAnimate();
       context.clearRect(0, 0, width, height);
       particles.forEach((particle, index) => {
-        particle.x += particle.vx + (pointerX - .5) * .055;
-        particle.y += particle.vy + (pointerY - .5) * .04;
+        if (animate) {
+          particle.x += particle.vx + (pointerX - .5) * .055;
+          particle.y += particle.vy + (pointerY - .5) * .04;
+        }
         if (particle.x < -20) particle.x = width + 20;
         if (particle.x > width + 20) particle.x = -20;
         if (particle.y < -20) particle.y = height + 20;
@@ -232,6 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const other = particles[otherIndex];
           const dx = particle.x - other.x;
           const dy = particle.y - other.y;
+          if (Math.abs(dx) > 112 || Math.abs(dy) > 112) continue;
           const distance = Math.hypot(dx, dy);
           if (distance > 112) continue;
           context.beginPath();
@@ -242,25 +352,47 @@ document.addEventListener('DOMContentLoaded', () => {
           context.stroke();
         }
       });
-      canvasFrame = requestAnimationFrame(drawNetwork);
+      if (animate) canvasFrame = requestAnimationFrame(drawNetwork);
     };
-    hero.addEventListener('pointermove', event => {
-      const bounds = hero.getBoundingClientRect();
-      pointerX = (event.clientX - bounds.left) / bounds.width;
-      pointerY = (event.clientY - bounds.top) / bounds.height;
-      hero.style.setProperty('--hero-pointer-x', `${pointerX * 100}%`);
-      hero.style.setProperty('--hero-pointer-y', `${pointerY * 100}%`);
+    pointerEffect(hero, event => {
+      const bounds = boundsFor(hero);
+      return () => {
+        pointerX = (event.clientX - bounds.left) / bounds.width;
+        pointerY = (event.clientY - bounds.top) / bounds.height;
+        hero.style.setProperty('--hero-pointer-x', `${pointerX * 100}%`);
+        hero.style.setProperty('--hero-pointer-y', `${pointerY * 100}%`);
+      };
+    }, () => {
+      pointerX = .5;
+      pointerY = .5;
+      hero.style.removeProperty('--hero-pointer-x');
+      hero.style.removeProperty('--hero-pointer-y');
     });
-    const visibilityObserver = new IntersectionObserver(entries => {
-      active = entries[0].isIntersecting && !document.hidden;
-      if (active && !canvasFrame) drawNetwork();
-    }, { threshold: 0 });
-    visibilityObserver.observe(hero);
-    document.addEventListener('visibilitychange', () => {
-      active = !document.hidden && hero.getBoundingClientRect().bottom > 0;
-      if (active && !canvasFrame) drawNetwork();
+    const syncCanvas = () => {
+      cancelAnimationFrame(canvasFrame);
+      canvasFrame = 0;
+      if (canAnimate()) canvasFrame = requestAnimationFrame(drawNetwork);
+    };
+    if ('IntersectionObserver' in window) {
+      const visibilityObserver = new IntersectionObserver(entries => {
+        intersecting = entries[0].isIntersecting;
+        syncCanvas();
+      }, { threshold: 0 });
+      visibilityObserver.observe(hero);
+    }
+    document.addEventListener('visibilitychange', syncCanvas);
+    [staticMobile, reducedMotion].forEach(query => query.addEventListener('change', syncCanvas));
+    const resizeScene = debounce(() => {
+      scheduleInput(canvas, () => () => {
+        cancelAnimationFrame(canvasFrame);
+        resizeCanvas();
+        drawNetwork();
+      });
+      scheduleInput(progressBar, updateProgress);
     });
-    window.addEventListener('resize', resizeCanvas, { passive: true });
+    window.addEventListener('resize', resizeScene, { passive: true });
+    window.addEventListener('orientationchange', resizeScene, { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(resizeScene).observe(hero);
     resizeCanvas();
     drawNetwork();
   }

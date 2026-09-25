@@ -4,10 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const form=document.getElementById('chat-form');
   const input=document.getElementById('chat-input');
   const submit=document.getElementById('chat-submit');
-  if(!form) return;
+  if(!form || form.dataset.chatInitialized) return;
+  form.dataset.chatInitialized='true';
   const csrf=document.getElementById('csrf_token').value;
   let busy=false;
   const maps=[];
+  const pendingMaps=new Map();
   function el(tag, cls, text) { const n=document.createElement(tag); if(cls) n.className=cls; if(text) n.textContent=text; return n; }
   function row(text, user=false) {
     const r=el('div',`message-row ${user?'user-row':'assistant-row'}`);
@@ -16,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Bound DOM and map resources; no durable chat storage.
     while(messages.children.length>40) {
       const first=messages.firstElementChild;
+      pendingMaps.forEach((job,element)=>{if(first.contains(element)){job.cancel();pendingMaps.delete(element);}});
       maps.filter(m=>first.contains(m.getContainer())).forEach(m=>{m.remove();maps.splice(maps.indexOf(m),1);}); first.remove();
     }
     messages.scrollTop=messages.scrollHeight;
@@ -73,6 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const facilities=data.facilities.filter(hasCoords);
       if(facilities.length) {
         const mapElement=el('div','assistant-map');mapElement.setAttribute('aria-label','Peta fasilitas hasil pencarian');bubble.append(mapElement);
+        const job=window.SehatWarga.whenNearViewport(mapElement,async()=>{
+        pendingMaps.delete(mapElement);
+        try {await window.SehatWarga.loadMapLibrary();} catch { /* Preserve the existing failure text. */ }
+        if(!mapElement.isConnected) return;
+        const wasAtBottom=messages.scrollHeight-messages.scrollTop-messages.clientHeight<40;
         if(typeof L==='undefined') mapElement.textContent='Peta tidak tersedia. Informasi fasilitas tetap dapat dibaca di atas.';
         else {
           mapElement.classList.add('skeleton');
@@ -84,6 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if(data.user_location && hasCoords(data.user_location)) points.push(L.circleMarker([data.user_location.latitude,data.user_location.longitude],{radius:7,color:'#0B8179'}).addTo(map).bindPopup(el('strong','','Lokasi Anda')));
           map.fitBounds(L.featureGroup(points).getBounds(),{padding:[24,24],maxZoom:15});
         }
+        if(wasAtBottom) messages.scrollTop=messages.scrollHeight;
+        });
+        pendingMaps.set(mapElement,job);
       }
     }
     messages.scrollTop=messages.scrollHeight;

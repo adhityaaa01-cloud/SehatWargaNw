@@ -14,6 +14,7 @@ function facilityPopup(f) {
   return node;
 }
 function createFacilityMap(element,center,zoom) {
+  if(!element || !element.isConnected) return null;
   if(typeof L==='undefined') {element.textContent='Peta tidak dapat dimuat. Gunakan daftar fasilitas untuk melihat informasi.';element.setAttribute('role','status');return null;}
   element.classList.add('skeleton');
   const map=L.map(element).setView(center,zoom);
@@ -26,10 +27,28 @@ function createFacilityMap(element,center,zoom) {
 }
 function initFacilityListMap(mapId,facilitiesData) {
   const element=document.getElementById(mapId);
+  if(element?.dataset.facilityMapInitialized) return;
+  if(element) element.dataset.facilityMapInitialized='true';
   const facilities=(facilitiesData || []).filter(validFacilityCoordinates);
-  const map=element&&facilities.length?createFacilityMap(element,[facilities[0].lat,facilities[0].lng],11):null;
+  let map=null;
+  let location=null;
+  const showLocation = () => {
+    if(!map || !location) return;
+    if(userMarker) map.removeLayer(userMarker);
+    userMarker=L.circleMarker(location,{radius:7,color:'#0B8179'}).addTo(map).bindPopup(facilityNode('strong','Posisi Anda'));
+    map.setView(location,12);
+  };
+  const lazyMap=element&&facilities.length?window.SehatWarga.whenNearViewport(element,async()=>{
+    try {await window.SehatWarga.loadMapLibrary();} catch { /* Existing unavailable-map response below. */ }
+    if(!element.isConnected) return;
+    map=createFacilityMap(element,[facilities[0].lat,facilities[0].lng],11);
+    if(map){
+      facilities.forEach(f=>L.marker([f.lat,f.lng]).addTo(map).bindPopup(facilityPopup(f)));
+      map.fitBounds(facilities.map(f=>[f.lat,f.lng]),{padding:[32,32],maxZoom:14});
+      showLocation();
+    }
+  }):null;
   if(element&&!facilities.length)element.textContent='Belum ada koordinat fasilitas untuk hasil pencarian ini.';
-  if(map){facilities.forEach(f=>L.marker([f.lat,f.lng]).addTo(map).bindPopup(facilityPopup(f)));map.fitBounds(facilities.map(f=>[f.lat,f.lng]),{padding:[32,32],maxZoom:14});}
   const button=document.getElementById('btn-use-location'),feedback=document.getElementById('location-feedback');
   let userMarker=null;
   const status=(text,type='info')=>{if(feedback){feedback.style.display='block';feedback.className=`alert alert-${type}`;feedback.setAttribute('role','status');feedback.textContent=text;}};
@@ -38,7 +57,7 @@ function initFacilityListMap(mapId,facilitiesData) {
     button.disabled=true;button.textContent='Mencari lokasi…';
     navigator.geolocation.getCurrentPosition(position=>{
       const lat=position.coords.latitude,lon=position.coords.longitude;
-      if(map){if(userMarker)map.removeLayer(userMarker);userMarker=L.circleMarker([lat,lon],{radius:7,color:'#0B8179'}).addTo(map).bindPopup(facilityNode('strong','Posisi Anda'));map.setView([lat,lon],12);}
+      location=[lat,lon];lazyMap?.start();showLocation();
       facilities.forEach(f=>{const text=`± ${calculateDistanceKm(lat,lon,f.lat,f.lng)} km (perkiraan garis lurus)`;for(const prefix of ['distance-card-','distance-marker-']){const n=document.getElementById(prefix+f.id);if(n){n.textContent=text;n.style.display='inline-block';}}});
       status(facilities.length?'Lokasi digunakan untuk menghitung jarak fasilitas pada halaman ini. Koordinat tidak disimpan.':'Tidak ada fasilitas berkoordinat pada hasil ini. Ubah filter pencarian.','info');button.disabled=false;button.textContent='Gunakan Lokasi Saya';
     },()=>{button.disabled=false;button.textContent='Gunakan Lokasi Saya';status('Lokasi tidak dapat diakses. Anda tetap dapat mencari fasilitas secara manual.','warning');},{timeout:10000,enableHighAccuracy:false,maximumAge:0});
@@ -46,7 +65,13 @@ function initFacilityListMap(mapId,facilitiesData) {
 }
 function initFacilityDetailMap(mapId,facility) {
   const element=document.getElementById(mapId);if(!element)return;
+  if(element.dataset.facilityMapInitialized) return;
+  element.dataset.facilityMapInitialized='true';
   if(!validFacilityCoordinates(facility)){element.textContent='Lokasi peta belum tersedia untuk fasilitas ini.';return;}
-  const map=createFacilityMap(element,[facility.lat,facility.lng],15);
-  if(map)L.marker([facility.lat,facility.lng]).addTo(map).bindPopup(facilityPopup(facility)).openPopup();
+  window.SehatWarga.whenNearViewport(element,async()=>{
+    try {await window.SehatWarga.loadMapLibrary();} catch { /* Existing unavailable-map response below. */ }
+    if(!element.isConnected) return;
+    const map=createFacilityMap(element,[facility.lat,facility.lng],15);
+    if(map)L.marker([facility.lat,facility.lng]).addTo(map).bindPopup(facilityPopup(facility)).openPopup();
+  });
 }
