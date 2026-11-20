@@ -33,7 +33,7 @@
 - **Migrasi Database**: Alembic melalui Flask-Migrate
 - **Autentikasi & Sesi**: Flask-Login dengan hashing password melalui Werkzeug (default scrypt)
 - **Formulir & Keamanan**: Flask-WTF (Proteksi CSRF aktif di seluruh transaksi mutasi)
-- **Peta Interaktif**: Leaflet 1.9.4 & OpenStreetMap untuk visualisasi geospasial faskes
+- **Peta Interaktif**: Mapbox GL JS & Mapbox Streets; pencarian fasilitas eksternal melalui Search Box API
 - **Frontend & UI/UX**: HTML5 Semantik, CSS3 murni berbasis design tokens terstruktur (`design.md`)
 
 ---
@@ -447,3 +447,15 @@ Cari fasilitas aktif di direktori Fasilitas berdasarkan nama, kota, atau jenis. 
 SehatWarga menyediakan kepesertaan dan kartu digital, anggota keluarga, pengajuan layanan, iuran, pembayaran simulasi, pengaduan, dan direktori fasilitas. Prototipe akademik independen, bukan BPJS atau pemerintah. Asisten hanya membaca informasi; semua tindakan tetap melalui form dan konfirmasi pengguna.
 
 <!-- END VERIFIED BUSINESS KNOWLEDGE -->
+
+
+## Peta dan pencarian Mapbox
+
+Isi `MAPBOX_PUBLIC_TOKEN` di `.env` lokal dengan token publik `pk.`, lalu restart
+server. Beranda dan direktori menyediakan tombol **Cari di Mapbox**; katalog
+internal tetap dipakai untuk pengajuan layanan simulasi. Hasil kategori maksimal
+25, pencarian nama maksimal 10; hasil dapat mencakup unit dalam rumah sakit dan
+perlu diverifikasi. Penggunaan mengikuti kuota/penagihan akun Mapbox.
+Lihat [laporan integrasi](MAPBOX_INTEGRATION_REPORT.md) untuk hasil uji langsung
+dan batasan sumber data.
+# SehatWargaNw
