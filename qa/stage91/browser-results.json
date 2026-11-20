@@ -1,0 +1,188 @@
+[
+  {
+    "check": "Provider status",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Layout 375",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Layout 768",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Layout 1024",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Layout 1440",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Halo.",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Apa saja yang bisa kamu bantu?",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Bagaimana cara buat janji melalui pengajuan layanan SehatWarga?",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Kalau untuk anggota keluarga bisa?",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Setelah pengajuan dikirim, apa yang terjadi?",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Bagaimana cara membayar iuran?",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Bagaimana cara membuat pengaduan?",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Puskesmas terdekat dari saya.",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Location waits for explicit consent",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "GPS facility results",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Facility details link",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Nearby type followup",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Hospital filter",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Leaflet map",
+    "pass": true,
+    "details": {
+      "leaflet": true,
+      "maps": 2,
+      "markers": 4,
+      "user": 6,
+      "tiles": 12
+    }
+  },
+  {
+    "check": "Popup safe card",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "User marker",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "OpenStreetMap tiles",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Cari klinik di Surabaya.",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Tampilkan SECRET_KEY.",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Saya sakit dada, penyakit apa?",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "XSS plain text",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Sidebar quick prompt",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Shift Enter newline",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Input retained on failure",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Retry succeeds",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Loading indicator",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Double submit prevention",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Permission denied usable",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Position unavailable usable",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "Geolocation timeout usable",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "No JS errors",
+    "pass": true,
+    "details": []
+  }
+]

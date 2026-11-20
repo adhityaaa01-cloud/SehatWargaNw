@@ -1,0 +1,11 @@
+{
+  "head": "3dfb67eddef4",
+  "access": "Read-only version, migration and unique-index metadata; connection rollback",
+  "database_modified": false,
+  "current": [
+    "3dfb67eddef4"
+  ],
+  "server_version": "8.0.11-TiDB-v8.5.3-serverless",
+  "billing_unique_constraint": true,
+  "pass": true
+}

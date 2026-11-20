@@ -2,7 +2,8 @@ import logging
 from typing import Dict, Any, Optional, List, Tuple
 from app.services.facility_service import find_nearest_facilities, search_facilities
 from app.services.ai_service import get_ai_provider, FallbackAIProvider, extract_facility_filter, extract_city_filter
-from app.services.assistant_safety import deterministic_safety
+from app.services.assistant_safety import deterministic_safety, redact_sensitive
+from app.services.assistant_runtime import generate, status
 from flask_login import current_user
 
 logger = logging.getLogger(__name__)
@@ -20,7 +21,7 @@ def validate_user_message(message: Any) -> Tuple[bool, str]:
     if not stripped:
         return False, "Pesan tidak boleh kosong."
 
-    if len(stripped) > 2000:
+    if len(message) > 2000:
         return False, "Pesan terlalu panjang (maksimal 2000 karakter)."
 
     return True, stripped
@@ -52,6 +53,12 @@ def process_assistant_chat(
     ):
         return {"success": False, "message": "Riwayat percakapan tidak valid."}, 400
 
+    history = conversation_history or []
+    if sum(len(i['content']) for i in history) > 10000:
+        return {"success": False, "message": "Riwayat percakapan terlalu besar."}, 400
+    safe_history = [dict(role=i['role'], content=redact_sensitive(i['content'])) for i in history
+                    if not deterministic_safety(i['content'])]
+
     if user_location is not None:
         import math
         try:
@@ -68,7 +75,7 @@ def process_assistant_chat(
     # Intent fungsional ditentukan secara lokal agar map, database,
     # akun, dan sistem keamanan tetap stabil.
     local_provider = FallbackAIProvider()
-    local_intent = local_provider.classify_intent(validated_msg)
+    local_intent = local_provider.classify_intent(validated_msg, {"conversation_history": history})
 
     # Variabel intent harus selalu dibuat.
     intent = safety or local_intent
@@ -234,24 +241,14 @@ def process_assistant_chat(
             "facilities": facilities,
         }, 200
 
-    # 3. Handle informational guides & safety responses
-    try:
-        response_text = ai_provider.generate_response(
-            message=validated_msg,
-            intent=intent,
-            context={"conversation_history": (conversation_history or [])[-10:]},
-        )
-    except Exception:
-        response_text = FallbackAIProvider().generate_response(validated_msg, intent)
-
+    # The provider receives only validated/redacted public conversation, never GPS/account data.
+    context = {"conversation_history": safe_history, "validated_history": safe_history}
+    response_text, source = generate(ai_provider, validated_msg, intent, context)
     return {
-        "success": True,
-        "message": response_text,
-        "intent": intent,
-        "requires_location": False,
-        "facility_type": facility_type,
-        "user_location": None,
-        "facilities": [],
+        "success": True, "message": response_text, "intent": intent,
+        "response_source": source, "ai_status": status(),
+        "requires_location": False, "facility_type": facility_type,
+        "user_location": None, "facilities": [],
     }, 200
 
 

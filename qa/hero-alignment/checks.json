@@ -1,0 +1,34 @@
+[
+  {
+    "hero": 40.96875,
+    "services": 40.96875,
+    "directory": 40.96875,
+    "overflow": false,
+    "width": 1366,
+    "passed": true
+  },
+  {
+    "hero": 43.1875,
+    "services": 43.1875,
+    "directory": 43.1875,
+    "overflow": false,
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "hero": 168,
+    "services": 168,
+    "directory": 168,
+    "overflow": false,
+    "width": 1920,
+    "passed": true
+  },
+  {
+    "hero": 20,
+    "services": 20,
+    "directory": 20,
+    "overflow": false,
+    "width": 375,
+    "passed": true
+  }
+]

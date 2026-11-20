@@ -58,7 +58,7 @@
         {{ payment.payment_number }}
       </div>
       <div class="text-xs text-muted mt-1">
-        Waktu Transaksi: {{ payment.created_at.strftime('%d %B %Y, %H:%M:%S WIB') if payment.created_at else '-' }}
+        Waktu Transaksi: {{ payment.created_at|wib_datetime('%d %B %Y, %H:%M:%S WIB') }}
       </div>
     </div>
 

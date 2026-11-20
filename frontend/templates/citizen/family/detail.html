@@ -60,12 +60,12 @@
 
       <div class="profile-field">
         <span class="profile-field-label">Tanggal Ditambahkan</span>
-        <span class="profile-field-value">{{ member.created_at.strftime('%d %B %Y %H:%M') if member.created_at else '-' }} WIB</span>
+        <span class="profile-field-value">{{ member.created_at|wib_datetime }}</span>
       </div>
 
       <div class="profile-field">
         <span class="profile-field-label">Terakhir Diperbarui</span>
-        <span class="profile-field-value">{{ member.updated_at.strftime('%d %B %Y %H:%M') if member.updated_at else '-' }} WIB</span>
+        <span class="profile-field-value">{{ member.updated_at|wib_datetime }}</span>
       </div>
     </div>
 

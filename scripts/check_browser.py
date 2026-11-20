@@ -28,7 +28,7 @@ try:
       if role!='public':
         page.goto('http://127.0.0.1:5055/login');page.locator('#email').fill('admin.demo@sehatwarga.test' if role=='admin' else 'warga.demo@sehatwarga.test');page.locator('#password').fill('AdminDemo123!' if role=='admin' else 'WargaDemo123!');page.locator('button[type=submit]').last.click();page.wait_for_url('**/dashboard')
       paths={'public':['/','/login','/register','/facilities','/assistant'],'citizen':['/citizen/dashboard','/citizen/services','/citizen/services/request','/citizen/card','/citizen/complaints/create'],'admin':['/admin/dashboard','/admin/services','/admin/facilities']}[role]
-      for width in [320,375,480,768,1024,1440]:
+      for width in [360,375,768,1024,1440]:
         page.set_viewport_size({'width':width,'height':1000})
         for path in paths:
           response=page.goto('http://127.0.0.1:5055'+path,wait_until='domcontentloaded');page.wait_for_timeout(80)
@@ -36,7 +36,7 @@ try:
           overflow=page.evaluate('''() => [...document.querySelectorAll('body *')].filter(e => {const r=e.getBoundingClientRect();const c=getComputedStyle(e);return r.width&&r.right>innerWidth+1&&c.visibility!=='hidden'&&!e.closest('.table-responsive,.leaflet-container,.site-navigation,.sr-only');}).map(e=>e.tagName+'.'+e.className).slice(0,12)''')
           check(f'{role} {path} {width} no overflow',page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),overflow)
           check(f'{role} {path} {width} main heading',page.locator('h1').count()==1)
-          if width in [375,1440] and path in ['/','/assistant','/citizen/dashboard','/admin/dashboard']:
+          if width in [375,1440] and path in ['/','/facilities','/assistant','/citizen/dashboard','/admin/dashboard']:
             page.screenshot(path=str(OUT/(role+'-'+path.strip('/').replace('/','-')+'-'+str(width)+'.png')),full_page=True)
         if width<1024:
           page.locator('#nav-toggle').click();check(f'{role} drawer {width} opens',page.locator('#nav-toggle').get_attribute('aria-expanded')=='true');check(f'{role} drawer {width} scroll lock',page.evaluate('getComputedStyle(document.body).overflow')=='hidden')

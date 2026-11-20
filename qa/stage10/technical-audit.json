@@ -1,0 +1,72 @@
+[
+  {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "compileall",
+      "-q",
+      "backend",
+      "tests",
+      "scripts",
+      "run.py"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "stdout": "No broken requirements found.\n",
+    "stderr": "WARNING: The directory '/home/adhitya/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.\n"
+  },
+  {
+    "command": [
+      ".venv/bin/flask",
+      "--app",
+      "run.py",
+      "routes"
+    ],
+    "exit_code": 0,
+    "stdout": "Endpoint                        Methods    Rule                                             \n------------------------------  ---------  -------------------------------------------------\nadmin.complaint_detail          GET        /admin/complaints/<int:complaint_id>             \nadmin.complaint_reject          POST       /admin/complaints/<int:complaint_id>/reject      \nadmin.complaint_resolve         POST       /admin/complaints/<int:complaint_id>/resolve     \nadmin.complaint_start           POST       /admin/complaints/<int:complaint_id>/start       \nadmin.complaints_list           GET        /admin/complaints                                \nadmin.contribution_detail       GET        /admin/contributions/<int:contribution_id>       \nadmin.contributions_generate    POST       /admin/contributions/generate                    \nadmin.contributions_list        GET        /admin/contributions                             \nadmin.dashboard                 GET        /admin/dashboard                                 \nadmin.facilities_list           GET        /admin/facilities                                \nadmin.facility_create           GET, POST  /admin/facilities/create                         \nadmin.facility_edit             GET, POST  /admin/facilities/<int:facility_id>/edit         \nadmin.facility_toggle_status    POST       /admin/facilities/<int:facility_id>/toggle-status\nadmin.payments_list             GET        /admin/payments                                  \nadmin.service_complete          POST       /admin/services/<int:request_id>/complete        \nadmin.service_detail            GET        /admin/services/<int:request_id>                 \nadmin.service_reject            POST       /admin/services/<int:request_id>/reject          \nadmin.service_schedule          POST       /admin/services/<int:request_id>/schedule        \nadmin.service_verify            POST       /admin/services/<int:request_id>/verify          \nadmin.services_list             GET        /admin/services                                  \nassistant.chat_api              POST       /assistant/chat                                  \nassistant.chat_page             GET        /assistant                                       \nassistant.location_api          POST       /assistant/location                              \nassistant.provider_status       GET        /assistant/status                                \nassistant.scan_api              POST       /assistant/scan/confirm                          \nassistant.scan_api              POST       /assistant/scan/correct                          \nassistant.scan_api              POST       /assistant/scan                                  \nauth.login                      GET, POST  /login                                           \nauth.logout                     POST       /logout                                          \nauth.register                   GET, POST  /register                                        \ncitizen.card                    GET        /citizen/card                                    \ncitizen.complaint_create        GET, POST  /citizen/complaints/create                       \ncitizen.complaint_detail        GET        /citizen/complaints/<int:complaint_id>           \ncitizen.complaints_list         GET        /citizen/complaints                              \ncitizen.contribution_detail     GET        /citizen/contributions/<int:contribution_id>     \ncitizen.contribution_pay        GET, POST  /citizen/contributions/<int:contribution_id>/pay \ncitizen.contributions_list      GET        /citizen/contributions                           \ncitizen.dashboard               GET        /citizen/dashboard                               \ncitizen.family_add              GET, POST  /citizen/family/add                              \ncitizen.family_detail           GET        /citizen/family/<int:member_id>                  \ncitizen.family_edit             GET, POST  /citizen/family/<int:member_id>/edit             \ncitizen.family_list             GET        /citizen/family                                  \ncitizen.family_remove           POST       /citizen/family/<int:member_id>/remove           \ncitizen.payment_detail          GET        /citizen/payments/<int:payment_id>               \ncitizen.payments_list           GET        /citizen/payments                                \ncitizen.profile                 GET        /citizen/profile                                 \ncitizen.service_request_cancel  POST       /citizen/services/<int:request_id>/cancel        \ncitizen.service_request_create  GET, POST  /citizen/services/request                        \ncitizen.service_request_detail  GET        /citizen/services/<int:request_id>               \ncitizen.service_requests_list   GET        /citizen/services                                \nfacilities.detail_facility      GET        /facilities/<int:facility_id>                    \nfacilities.list_facilities      GET        /facilities                                      \nmain.health                     GET        /health                                          \nmain.index                      GET        /                                                \nstatic                          GET        /static/<path:filename>                          \n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      ".venv/bin/flask",
+      "--app",
+      "run.py",
+      "db",
+      "heads"
+    ],
+    "exit_code": 0,
+    "stdout": "3dfb67eddef4 (head)\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--",
+      "migrations"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

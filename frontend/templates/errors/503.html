@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}503 Koneksi Database Terganggu - SehatWarga{% endblock %}
+
+{% block content %}
+<div class="container dashboard-wrapper">
+  <div class="error-box">
+    <div class="error-code">503</div>
+    <h1 class="error-title">Koneksi Database Sedang Terganggu</h1>
+    <p class="error-message">Server belum dapat terhubung ke database. Silakan coba lagi dalam beberapa saat. Jika masalah berlanjut, hubungi pengelola untuk memeriksa koneksi internet dan layanan database.</p>
+    <div class="flex justify-center gap-3">
+      <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-rounded">Kembali ke Halaman Masuk</a>
+      <a href="{{ url_for('main.index') }}" class="btn btn-outline-primary btn-rounded">Ke Beranda</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

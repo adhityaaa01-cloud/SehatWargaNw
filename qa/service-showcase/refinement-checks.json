@@ -1,0 +1,295 @@
+[
+  {
+    "width": 1366,
+    "slide": 1,
+    "pass": true,
+    "detail": {
+      "ratio": 2.673596402619831,
+      "contain": true,
+      "panelRatio": 2.6667099328292827,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1366,
+    "slide": 2,
+    "pass": true,
+    "detail": {
+      "ratio": 2.673596402619831,
+      "contain": true,
+      "panelRatio": 2.6667099328292827,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1366,
+    "slide": 3,
+    "pass": true,
+    "detail": {
+      "ratio": 2.673596402619831,
+      "contain": true,
+      "panelRatio": 2.6667099328292827,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1366,
+    "slide": 4,
+    "pass": true,
+    "detail": {
+      "ratio": 2.673596402619831,
+      "contain": true,
+      "panelRatio": 2.6667099328292827,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1440,
+    "slide": 1,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6732593714268056,
+      "contain": true,
+      "panelRatio": 2.6666666666666665,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1440,
+    "slide": 2,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6732593714268056,
+      "contain": true,
+      "panelRatio": 2.6666666666666665,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1440,
+    "slide": 3,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6732593714268056,
+      "contain": true,
+      "panelRatio": 2.6666666666666665,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1440,
+    "slide": 4,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6732593714268056,
+      "contain": true,
+      "panelRatio": 2.6666666666666665,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1920,
+    "slide": 1,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6722972972972974,
+      "contain": true,
+      "panelRatio": 2.6666666666666665,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1920,
+    "slide": 2,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6722972972972974,
+      "contain": true,
+      "panelRatio": 2.6666666666666665,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1920,
+    "slide": 3,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6722972972972974,
+      "contain": true,
+      "panelRatio": 2.6666666666666665,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 1920,
+    "slide": 4,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6722972972972974,
+      "contain": true,
+      "panelRatio": 2.6666666666666665,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 768,
+    "slide": 1,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6790324456332133,
+      "contain": true,
+      "panelRatio": 2.666743622301743,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 768,
+    "slide": 2,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6790324456332133,
+      "contain": true,
+      "panelRatio": 2.666743622301743,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 768,
+    "slide": 3,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6790324456332133,
+      "contain": true,
+      "panelRatio": 2.666743622301743,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 768,
+    "slide": 4,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6790324456332133,
+      "contain": true,
+      "panelRatio": 2.666743622301743,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 375,
+    "slide": 1,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6666666666666665,
+      "contain": true,
+      "panelRatio": 0.7282608695652174,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 375,
+    "slide": 2,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6666666666666665,
+      "contain": true,
+      "panelRatio": 0.7282608695652174,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 375,
+    "slide": 3,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6666666666666665,
+      "contain": true,
+      "panelRatio": 0.7282608695652174,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 375,
+    "slide": 4,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6666666666666665,
+      "contain": true,
+      "panelRatio": 0.7282608695652174,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 320,
+    "slide": 1,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6666666666666665,
+      "contain": true,
+      "panelRatio": 0.6086956521739131,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 320,
+    "slide": 2,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6666666666666665,
+      "contain": true,
+      "panelRatio": 0.6086956521739131,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 320,
+    "slide": 3,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6666666666666665,
+      "contain": true,
+      "panelRatio": 0.6086956521739131,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "width": 320,
+    "slide": 4,
+    "pass": true,
+    "detail": {
+      "ratio": 2.6666666666666665,
+      "contain": true,
+      "panelRatio": 0.6086956521739131,
+      "overflow": false,
+      "buttonText": ""
+    }
+  },
+  {
+    "check": "no JS errors",
+    "pass": true,
+    "detail": []
+  }
+]

@@ -23,3 +23,7 @@ WTForms==3.2.2
 
 google-genai==2.23.0
 groq==1.7.0
+
+# Python OCR adapter and image decoder; Tesseract + ind/eng are system packages.
+pytesseract==0.3.13
+Pillow==13.0.0

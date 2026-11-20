@@ -1,0 +1,12 @@
+[Unit]
+Description=SehatWarga overdue update daily at 00:30 WIB
+
+[Timer]
+OnCalendar=*-*-* 00:30:00 Asia/Jakarta
+AccuracySec=1s
+RandomizedDelaySec=0
+Persistent=true
+Unit=sehatwarga-daily-overdue.service
+
+[Install]
+WantedBy=timers.target

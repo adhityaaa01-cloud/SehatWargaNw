@@ -119,3 +119,23 @@ def detail_facility(facility_id):
         type_label=FACILITY_TYPE_LABELS.get(facility.facility_type, facility.facility_type),
         map_facility=map_facility,
     )
+
+
+@facilities_bp.get("/mapbox-search")
+def mapbox_search():
+    from flask import jsonify
+    from app.services.mapbox_service import search, MapboxError
+    try:
+        result = search(query=request.args.get('query', '').strip(),
+                        city=request.args.get('city', 'Lamongan').strip(),
+                        facility_type=request.args.get('facility_type', 'HOSPITAL'),
+                        lat=request.args.get('lat'), lng=request.args.get('lng'))
+        response = jsonify(result)
+    except MapboxError as error:
+        response = jsonify(error=str(error))
+        response.status_code = error.status
+        if error.status == 429:
+            response.headers['Retry-After'] = '60'
+    response.headers['Cache-Control'] = 'no-store'
+    response.headers['Referrer-Policy'] = 'strict-origin'
+    return response

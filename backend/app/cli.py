@@ -1,5 +1,9 @@
 import click
 import getpass
+import json
+import re
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from sqlalchemy import select
 from app.extensions import db
 from app.models.user import User
@@ -170,24 +174,37 @@ def register_cli_commands(app):
 
     @app.cli.command("generate-contributions")
     @click.option("--month", default=None, help="Bulan tagihan format YYYY-MM (contoh: 2026-09). Default: bulan berjalan.")
-    def generate_contributions_cmd(month):
+    @click.option("--dry-run", is_flag=True, help="Hitung kandidat tanpa membuat tagihan atau commit.")
+    @click.option("--json", "as_json", is_flag=True, help="Ringkasan JSON tanpa data pribadi.")
+    def generate_contributions_cmd(month, dry_run, as_json):
         """Membuat tagihan iuran bulanan untuk seluruh peserta aktif secara idempoten."""
         from datetime import date, datetime
         from app.services.contribution_service import generate_contributions_for_active_participants
 
-        target_date = None
-        if month:
+        target_date = datetime.now(ZoneInfo("Asia/Jakarta")).date().replace(day=1)
+        if month is not None:
             try:
+                if not re.fullmatch(r"\d{4}-(0[1-9]|1[0-2])", month.strip()):
+                    raise ValueError
                 parsed = datetime.strptime(month.strip(), "%Y-%m").date()
                 target_date = date(parsed.year, parsed.month, 1)
             except ValueError:
-                click.echo("Error: Format bulan tidak valid. Gunakan YYYY-MM (contoh: 2026-09).", err=True)
-                return
-        else:
-            today = date.today()
-            target_date = date(today.year, today.month, 1)
+                raise click.BadParameter("Format bulan tidak valid. Gunakan YYYY-MM.", param_hint="--month") from None
 
-        result = generate_contributions_for_active_participants(target_date)
+        try:
+            result = generate_contributions_for_active_participants(target_date, dry_run=dry_run)
+        except Exception as error:
+            db.session.rollback()
+            if as_json:
+                click.echo(json.dumps({"success": False, "error_category": type(error).__name__}))
+            raise click.ClickException(f"Pembuatan tagihan gagal ({type(error).__name__}).") from None
+        if as_json:
+            click.echo(json.dumps({**result, "period": result["period"].strftime("%Y-%m"), "success": True}))
+            return
+        if dry_run:
+            click.echo(f"DRY RUN periode {target_date:%Y-%m}: {result['total_active']} peserta aktif, "
+                       f"{result['would_create']} kandidat baru, {result['skipped']} sudah ada; tidak ada perubahan.")
+            return
         period_str = result["period"].strftime("%B %Y")
         click.echo(
             f"Tagihan periode {period_str}: "
@@ -197,20 +214,36 @@ def register_cli_commands(app):
 
     @app.cli.command("update-overdue")
     @click.option("--as-of", default=None, help="Tanggal acuan evaluasi jatuh tempo format YYYY-MM-DD. Default: hari ini.")
-    def update_overdue_cmd(as_of):
+    @click.option("--dry-run", is_flag=True, help="Hitung kandidat overdue tanpa perubahan atau commit.")
+    @click.option("--json", "as_json", is_flag=True, help="Ringkasan JSON tanpa data pribadi.")
+    def update_overdue_cmd(as_of, dry_run, as_json):
         """Memperbarui status tagihan yang belum dibayar dan melewati jatuh tempo menjadi OVERDUE."""
         from datetime import datetime
         from app.services.contribution_service import mark_overdue_contributions
 
-        ref_date = None
-        if as_of:
+        ref_date = datetime.now(ZoneInfo("Asia/Jakarta")).date()
+        if as_of is not None:
             try:
+                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", as_of.strip()):
+                    raise ValueError
                 ref_date = datetime.strptime(as_of.strip(), "%Y-%m-%d").date()
             except ValueError:
-                click.echo("Error: Format tanggal tidak valid. Gunakan YYYY-MM-DD (contoh: 2026-09-15).", err=True)
-                return
+                raise click.BadParameter("Format tanggal tidak valid. Gunakan YYYY-MM-DD.", param_hint="--as-of") from None
 
-        count = mark_overdue_contributions(reference_date=ref_date)
+        try:
+            count = mark_overdue_contributions(reference_date=ref_date, dry_run=dry_run)
+        except Exception as error:
+            db.session.rollback()
+            if as_json:
+                click.echo(json.dumps({"success": False, "error_category": type(error).__name__}))
+            raise click.ClickException(f"Pembaruan overdue gagal ({type(error).__name__}).") from None
+        if as_json:
+            click.echo(json.dumps({"success": True, "as_of": ref_date.isoformat(), "dry_run": dry_run,
+                                   "updated": 0 if dry_run else count, "would_update": count if dry_run else 0}))
+            return
+        if dry_run:
+            click.echo(f"DRY RUN tanggal {ref_date}: {count} kandidat overdue; tidak ada perubahan.")
+            return
         click.echo(f"Pembaruan status overdue selesai: {count} tagihan diperbarui menjadi OVERDUE.")
 
     @app.cli.command("seed-demo")

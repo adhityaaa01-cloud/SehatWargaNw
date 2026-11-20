@@ -1,0 +1,26 @@
+[
+  {
+    "file": "qa/stage10/participant-card.pdf",
+    "one_page": true,
+    "a4": true,
+    "required_text_present": true,
+    "navigation_and_print_actions_absent": true,
+    "pdf_text": "Kartu Peserta Digital\nKartu identitas elektronik kepesertaan jaminan kesehatan SehatWarga\n\nSEHATWARGA\nP R OTOT Y P E L AYA N A N K E S E H ATA N D I G I TA L\n\nN O M O R P E S E RTA\n\nSW-2026-8UJWV573\n\nWARGA UJI ALPHA\nSTATUS: AKTIF\n\nKelas: Kelas 2 \u2022 Terdaftar: 2026\n\nCatatan Prototype: Kartu digital ini diterbitkan secara simulasi oleh sistem\nakademik SehatWarga. Dokumen ini bukan kartu BPJS Kesehatan / BPJS\nKetenagakerjaan resmi.\n\n\f"
+  },
+  {
+    "file": "qa/stage10/payment-receipt.pdf",
+    "one_page": true,
+    "a4": true,
+    "required_text_present": true,
+    "navigation_and_print_actions_absent": true,
+    "pdf_text": "SEHATWARGA\n\nLUNAS (SIMULASI)\n\nSISTEM INFORMASI LAYANAN KESEHATAN WARGA\n\nStatus: SUCCESS\n\nBUKTI PEMBAYARAN IURAN ELEKTRONIK\nSWP-20261113-NSPAVSYQ\nWaktu Transaksi: 13 November 2026, 09:41:23 WIB\n\nDATA PESERTA\n\nNama Peserta:\nWarga Uji alpha\nNomor Peserta:\nSW-2026-8UJWV573\nKelas Rawat:\nCLASS_2\n\nDATA TRANSAKSI\n\nPeriode Iuran:\nFebruary 2027\nMetode Pembayaran:\nSimulasi Transfer\nKanal:\nSistem Simulasi Internal SehatWarga\nStatus Pelunasan:\nLunas (Verified)\n\nDeskripsi Tagihan\n\nJumlah\n\nIuran Jaminan Kesehatan SehatWarga\nPeriode February 2027 - Kelas CLASS_2\n\nTOTAL PEMBAYARAN\n\nRp100.000\n\nRp100.000\n\nPERINGATAN SIMULASI: Kuitansi ini dicetak dari sistem simulasi prototipe SehatWarga. Tidak ada transaksi moneter perbankan riil.\nDokumen ini bukan merupakan bukti pembayaran resmi BPJS Kesehatan.\nID Transaksi: SWP-20261113-NSPAVSYQ \u2022 Verifikasi: OK\n\n\f"
+  },
+  {
+    "file": "qa/stage10/long-name-card.pdf",
+    "one_page": true,
+    "a4": true,
+    "required_text_present": true,
+    "navigation_and_print_actions_absent": true,
+    "pdf_text": "Kartu Peserta Digital\nKartu identitas elektronik kepesertaan jaminan kesehatan SehatWarga\n\nSEHATWARGA\nP R OTOT Y P E L AYA N A N K E S E H ATA N D I G I TA L\n\nN O M O R P E S E RTA\n\nSW-2026-TN3783WZ\nWARGA UJI BETA KELUARGA\nPANJANG KELUARGA PANJANG\nKELUARGA PANJANG KELUARGA\nPANJANG KELUARGA PANJANG\nSTATUS: AKTIF\n\nKelas: Kelas 2 \u2022 Terdaftar: 2026\n\nCatatan Prototype: Kartu digital ini diterbitkan secara simulasi oleh sistem\nakademik SehatWarga. Dokumen ini bukan kartu BPJS Kesehatan / BPJS\nKetenagakerjaan resmi.\n\n\f"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "live_results": 25,
+      "map_canvas": true,
+      "popup": true
+    },
+    {
+      "width": 375,
+      "live_results": 25,
+      "map_canvas": true,
+      "popup": true
+    }
+  ],
+  "error_state": "PASS",
+  "home": "PASS",
+  "detail_map": "PASS",
+  "assistant_map": "PASS",
+  "browser_errors": []
+}

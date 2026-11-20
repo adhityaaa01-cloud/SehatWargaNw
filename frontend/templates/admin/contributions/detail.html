@@ -84,11 +84,11 @@
         </div>
         <div>
           <span style="font-size: 11px; text-transform: uppercase;" class="text-muted block">Tanggal Lunas</span>
-          <span>{{ contribution.paid_at.strftime('%d %B %Y %H:%M WIB') if contribution.paid_at else '-' }}</span>
+          <span>{{ contribution.paid_at|wib_datetime }}</span>
         </div>
         <div>
           <span style="font-size: 11px; text-transform: uppercase;" class="text-muted block">Dibuat Pada</span>
-          <span>{{ contribution.created_at.strftime('%d %B %Y %H:%M WIB') if contribution.created_at else '-' }}</span>
+          <span>{{ contribution.created_at|wib_datetime }}</span>
         </div>
       </div>
     </div>
@@ -115,7 +115,7 @@
             {% for p in contribution.payments %}
               <tr>
                 <td class="mono font-semibold">{{ p.payment_number }}</td>
-                <td class="text-sm">{{ p.created_at.strftime('%d %b %Y, %H:%M WIB') if p.created_at else '-' }}</td>
+                <td class="text-sm">{{ p.created_at|wib_datetime('%d %b %Y, %H:%M WIB') }}</td>
                 <td>{{ method_labels.get(p.payment_method, p.payment_method) }}</td>
                 <td class="font-semibold">{{ p.amount|rupiah }}</td>
                 <td><span class="badge badge-success">SUCCESS</span></td>

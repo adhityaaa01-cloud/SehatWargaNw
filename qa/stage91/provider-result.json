@@ -1,0 +1,13 @@
+{
+  "provider": "ollama",
+  "model": "llama3.1:latest",
+  "real_api": "FAIL",
+  "configured_timeout_seconds_before": 15000,
+  "effective_timeout_seconds_before": 180,
+  "frontend_timeout_seconds_before": 20,
+  "outside_sandbox_probe": {"exception_type": "URLError", "errno": 110, "duration_seconds": 135.28},
+  "response_received": false,
+  "model_availability_verified": false,
+  "database_current": "3dfb67eddef4",
+  "database_head": "3dfb67eddef4"
+}

@@ -1,0 +1,111 @@
+{
+  "mode": "local-reviewed-public-facts",
+  "products": [
+    {
+      "id": "id-bpom-dbl8730700110a1",
+      "name": "OSKADON",
+      "variant": "Tablet",
+      "aliases": [],
+      "form": "Tablet",
+      "active": [
+        {
+          "name": "Paracetamol",
+          "value": null,
+          "unit": null,
+          "basis": null
+        },
+        {
+          "name": "Caffeine",
+          "value": null,
+          "unit": null,
+          "basis": null
+        }
+      ],
+      "excipients": null,
+      "registrar": "SUPRA FERBINDO FARMA - Indonesia",
+      "manufacturer": "SUPRA FERBINDO FARMA - Indonesia",
+      "nie": "DBL8730700110A1",
+      "indications": "Meredakan sakit kepala (halaman resmi produsen untuk OSKADON tablet).",
+      "warnings": [],
+      "limitations": "Kadar dan basis kekuatan serta peringatan lengkap belum tersedia dalam sumber yang diperiksa. Periksa leaflet kemasan bersama apoteker. Kartu ini belum menggantikan informasi label lengkap.",
+      "detail_ready": true,
+      "checked_at": "2026-11-05",
+      "sources": [
+        {
+          "group": "Identitas, zat aktif, bentuk, NIE dan pendaftar",
+          "title": "Cek BPOM — cari OSKADON / DBL8730700110A1",
+          "url": "https://cekbpom.pom.go.id/produk-obat",
+          "identifier": "DBL8730700110A1; EREG100014VR12600023; aplikasi 05",
+          "checked_at": "2026-11-05"
+        },
+        {
+          "group": "Indikasi dan varian",
+          "title": "Tempo Scan — bagian OSKADON (bukan EXTRA/SP)",
+          "url": "https://www.temposcangroup.com/id/produk-layanan/otc/oskadon",
+          "identifier": "Bagian OSKADON",
+          "checked_at": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "id": "id-bpom-dbl9624502804a1",
+      "name": "PANADOL",
+      "variant": "Kaplet 500 mg (Regular)",
+      "aliases": [
+        "Panadol Regular"
+      ],
+      "form": "Kaplet",
+      "active": [
+        {
+          "name": "Paracetamol",
+          "value": "500",
+          "unit": "mg",
+          "basis": "per kaplet"
+        }
+      ],
+      "excipients": [
+        "Maize Starch",
+        "Starch Pregelatinized",
+        "Povidone K-25",
+        "Potassium Sorbate",
+        "Talc",
+        "Stearic Acid",
+        "Purified Water"
+      ],
+      "registrar": "STERLING PRODUCTS INDONESIA",
+      "manufacturer": "PT Sterling Products Indonesia, Jakarta, Indonesia",
+      "nie": "DBL9624502804A1",
+      "indications": "Meredakan sakit kepala, sakit gigi, nyeri otot, demam terkait flu/influenza, dan demam setelah vaksinasi.",
+      "warnings": [
+        "Hindari jika alergi paracetamol atau bahan produk lainnya.",
+        "Hubungi dokter bila nyeri melewati 3 hari atau demam belum turun selama 2 hari. Jangan gabungkan dengan produk lain berisi paracetamol.",
+        "Konsultasikan gangguan hati atau ginjal. Alkohol rutin meningkatkan risiko kerusakan hati.",
+        "Infeksi berat, berat badan sangat kurang, atau alkohol kronis memerlukan konsultasi karena risiko asidosis metabolik (sesak napas, mual, muntah, hilang nafsu makan).",
+        "Warfarin dan pengencer darah lainnya dapat meningkatkan risiko perdarahan; konsultasikan kepada dokter.",
+        "Hentikan pemakaian dan hubungi dokter jika muncul alergi, ruam/gatal/kulit terkelupas, gangguan napas, pembengkakan bibir/lidah/tenggorokan/wajah, sariawan, memar, atau perdarahan. Reaksi ini sangat jarang.",
+        "Kehamilan memerlukan konsultasi dokter; label membolehkan penggunaan saat menyusui.",
+        "Penggunaan berlebihan berisiko merusak hati: segera hubungi dokter. Tidak dianjurkan bagi anak di bawah 6 tahun.",
+        "Simpan tertutup rapat di bawah 30°C, jauh dari anak-anak."
+      ],
+      "limitations": "Ringkasan informasi label. Baca sumber asli untuk informasi lengkap; dosis pribadi tidak diberikan.",
+      "detail_ready": true,
+      "checked_at": "2026-11-05",
+      "sources": [
+        {
+          "group": "Identitas, bentuk, kekuatan, NIE dan pendaftar",
+          "title": "BPOM — PANADOL",
+          "url": "https://registrasiobat.pom.go.id/en/daftar-produk/assesment-report/DBL9624502804A1",
+          "identifier": "DBL9624502804A1",
+          "checked_at": "2026-11-05"
+        },
+        {
+          "group": "Komposisi per kaplet, indikasi, peringatan, bahan tambahan dan produsen",
+          "title": "Label resmi BPOM disetujui 15 Januari 2026 — halaman 1 dan 3",
+          "url": "https://registrasiobat.pom.go.id/files/assesment-reports/01783924613.pdf",
+          "identifier": "EREG10027312500056 / EREG10027312500057; NPA010259",
+          "checked_at": "2026-11-05"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 from pathlib import Path
-from flask import Flask, render_template
+from datetime import timezone
+from zoneinfo import ZoneInfo
+from flask import Flask, g, render_template
+from flask_login import AnonymousUserMixin
+from sqlalchemy.engine import make_url
+from sqlalchemy.exc import OperationalError
 from config import Config
 from app.extensions import db, migrate, login_manager, csrf
 
@@ -20,11 +25,23 @@ def create_app(config_class=Config):
     else:
         flask_app.config.from_object(config_class)
 
+    # Cloud MySQL can close idle connections; verify them before reuse.
+    if make_url(flask_app.config['SQLALCHEMY_DATABASE_URI']).get_backend_name() == 'mysql':
+        engine_options = dict(flask_app.config.get('SQLALCHEMY_ENGINE_OPTIONS', {}))
+        engine_options.setdefault('pool_pre_ping', True)
+        engine_options.setdefault('pool_recycle', 280)
+        connect_args = dict(engine_options.get('connect_args', {}))
+        connect_args.setdefault('connect_timeout', 10)
+        engine_options['connect_args'] = connect_args
+        flask_app.config['SQLALCHEMY_ENGINE_OPTIONS'] = engine_options
+
     # Initialize extensions
     db.init_app(flask_app)
     migrate.init_app(flask_app, db)
     login_manager.init_app(flask_app)
     csrf.init_app(flask_app)
+    from app.services.medicine_scan import Store
+    flask_app.extensions['medicine_scans'] = Store()
 
     # Configure login manager
     login_manager.login_view = "auth.login"
@@ -57,11 +74,25 @@ def create_app(config_class=Config):
     flask_app.register_blueprint(facilities_bp)
     flask_app.register_blueprint(assistant_bp)
 
+    @flask_app.context_processor
+    def mapbox_settings():
+        from app.services.mapbox_service import public_settings
+        return {"map_settings": public_settings()}
+
     # Register CLI commands
     from app.cli import register_cli_commands
     register_cli_commands(flask_app)
 
     # Template filters
+    @flask_app.template_filter("wib_datetime")
+    def format_wib_datetime(value, fmt="%d %B %Y %H:%M WIB"):
+        if value is None:
+            return "-"
+        # Persisted datetimes use UTC; MySQL/SQLite return them without tzinfo.
+        if value.tzinfo is None:
+            value = value.replace(tzinfo=timezone.utc)
+        return value.astimezone(ZoneInfo("Asia/Jakarta")).strftime(fmt)
+
     @flask_app.template_filter("rupiah")
     def format_rupiah(value):
         if value is None:
@@ -75,6 +106,15 @@ def create_app(config_class=Config):
             return f"Rp{value}"
 
     # Error handlers
+    @flask_app.errorhandler(OperationalError)
+    def database_unavailable(error):
+        db.session.rollback()
+        # Avoid another database lookup from the navbar if user loading failed.
+        # The login session remains intact for the next request.
+        g._login_user = AnonymousUserMixin()
+        flask_app.logger.warning('Database temporarily unavailable (%s)', type(error.orig).__name__)
+        return render_template('errors/503.html'), 503, {'Retry-After': '30', 'Cache-Control': 'no-store'}
+
     @flask_app.errorhandler(400)
     def bad_request_error(error):
         return render_template("errors/400.html"), 400
@@ -93,4 +133,3 @@ def create_app(config_class=Config):
         return render_template("errors/500.html"), 500
 
     return flask_app
-

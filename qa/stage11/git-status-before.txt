@@ -1,0 +1,73 @@
+ M .env.example
+ M backend/app/__init__.py
+ M backend/app/routes/assistant.py
+ D "backend/app/services/ai_service (1).py"
+ M backend/app/services/ai_service.py
+ D backend/app/services/ai_service.py.bak
+ M backend/app/services/assistant_knowledge.py
+ M backend/app/services/assistant_safety.py
+ M backend/app/services/assistant_service.py
+ M backend/config.py
+ M backend/requirements.txt
+ M frontend/static/css/assistant.css
+ M frontend/static/css/main.css
+ M frontend/static/js/assistant.js
+ M frontend/static/js/main.js
+ M frontend/templates/admin/contributions/detail.html
+ M frontend/templates/assistant/chat.html
+ M frontend/templates/base.html
+ M frontend/templates/citizen/contributions/detail.html
+ M frontend/templates/citizen/family/detail.html
+ M frontend/templates/citizen/payments/detail.html
+ M frontend/templates/citizen/profile.html
+ M frontend/templates/public/facilities/detail.html
+ M frontend/templates/public/facilities/list.html
+ M frontend/templates/public/home.html
+ M scripts/check_browser.py
+?? "Implementation and Preliminary Usability Evaluation of SehatWarga: A Web-Based Public Health Service Assistant.pdf"
+?? SCAN_OBAT.md
+?? STAGE_10_REPORT.md
+?? STAGE_9_1_REPORT.md
+?? backend/app/data/
+?? backend/app/services/assistant_runtime.py
+?? backend/app/services/medicine_scan.py
+?? docs/
+?? frontend/static/fonts/source-sans-3-latin-variable.woff2
+?? frontend/static/fonts/sourcesans3-OFL.txt
+?? frontend/static/images/
+?? frontend/static/js/home-directory.js
+?? frontend/static/js/service-showcase.js
+?? image/
+?? qa/REDESIGN_CURRENT.md
+?? qa/assistant-workspace/
+?? qa/background-transition/
+?? qa/hero-alignment/
+?? qa/hero-typography/
+?? qa/hero/
+?? qa/landing-directory/
+?? qa/layout-navbar/
+?? qa/lower-landing/
+?? qa/quick-services-final/
+?? qa/quick-services/
+?? qa/reference-carousel/
+?? qa/service-showcase/
+?? qa/services-animation/
+?? qa/services-panel/
+?? qa/services-smooth-centered/
+?? qa/stage10/
+?? qa/stage11/
+?? qa/stage91/
+?? scripts/audit_stage10_database.py
+?? scripts/check_assistant_workspace.py
+?? scripts/check_hero_typography.py
+?? scripts/check_landing_directory.py
+?? scripts/check_layout_navbar.py
+?? scripts/check_lower_landing.py
+?? scripts/check_medicine_scan.py
+?? scripts/check_service_showcase.py
+?? scripts/check_stage10_browser.py
+?? scripts/check_stage91_browser.py
+?? tests/test_medicine_scan.py
+?? tests/test_ollama_ai.py
+?? tests/test_stage10.py
+?? tests/test_stage91.py

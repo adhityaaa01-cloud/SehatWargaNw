@@ -1,6 +1,7 @@
 from datetime import date, datetime, timezone
 from decimal import Decimal
-from sqlalchemy import select
+from sqlalchemy import select, update
+from sqlalchemy.exc import DBAPIError
 from app.extensions import db
 from app.models.contribution import Contribution
 from app.models.participant import Participant
@@ -75,6 +76,7 @@ def generate_monthly_contribution(
     if existing:
         return existing, False
 
+    participant_id = participant.id
     # Snapshot rate based on participant's current service_class
     amount = get_rate_for_service_class(participant.service_class)
     due_date = get_simulated_due_date(period_start)
@@ -91,6 +93,22 @@ def generate_monthly_contribution(
     if commit:
         try:
             db.session.commit()
+        except DBAPIError as error:
+            db.session.rollback()
+            # Recover only a duplicate confirmed by the unique business key in
+            # a new transaction. No savepoints/advisory locks assumed on TiDB.
+            code = getattr(error.orig, "sqlite_errorcode", None)
+            args = getattr(error.orig, "args", ())
+            duplicate = code == 2067 or (bool(args) and (
+                args[0] == 1062 or (args[0] == 8147 and "[kv:1062]" in str(error.orig))
+            ))
+            if duplicate:
+                existing = db.session.execute(select(Contribution).filter_by(
+                    participant_id=participant_id, billing_period=period_start
+                )).scalar_one_or_none()
+                if existing is not None:
+                    return existing, False
+            raise
         except Exception:
             db.session.rollback()
             raise
@@ -98,7 +116,7 @@ def generate_monthly_contribution(
     return contribution, True
 
 
-def generate_contributions_for_active_participants(target_period: date = None) -> dict:
+def generate_contributions_for_active_participants(target_period: date = None, *, dry_run: bool = False) -> dict:
     """
     Generates monthly contributions for all ACTIVE participants for a given billing month.
     Idempotent: skips participants who already have a bill for this month.
@@ -106,39 +124,32 @@ def generate_contributions_for_active_participants(target_period: date = None) -
     """
     period_start = get_billing_period_start(target_period)
 
-    # Fetch active participants
-    active_participants = db.session.execute(
-        select(Participant).filter_by(membership_status="ACTIVE")
-    ).scalars().all()
-
     created_count = 0
     skipped_count = 0
+    would_create = 0
 
     try:
-        for p in active_participants:
-            # Check existing
-            existing = db.session.execute(
-                select(Contribution.id).filter_by(
-                    participant_id=p.id, billing_period=period_start
-                )
-            ).scalar_one_or_none()
-
-            if existing:
-                skipped_count += 1
-            else:
-                amount = get_rate_for_service_class(p.service_class)
-                due_date = get_simulated_due_date(period_start)
-                new_contrib = Contribution(
-                    participant_id=p.id,
-                    billing_period=period_start,
-                    amount=amount,
-                    status="UNPAID",
-                    due_date=due_date,
-                )
-                db.session.add(new_contrib)
-                created_count += 1
-
-        db.session.commit()
+        with db.session.no_autoflush:
+            active_participants = db.session.execute(
+                select(Participant).filter_by(membership_status="ACTIVE").order_by(Participant.id)
+            ).scalars().all()
+            for participant in active_participants:
+                if dry_run:
+                    exists = db.session.execute(select(Contribution.id).filter_by(
+                        participant_id=participant.id, billing_period=period_start
+                    )).scalar_one_or_none()
+                    if exists is not None:
+                        skipped_count += 1
+                    else:
+                        get_rate_for_service_class(participant.service_class)
+                        would_create += 1
+                else:
+                    # Commit each contribution through the same single-record
+                    # service. A losing duplicate rolls back only this attempt;
+                    # previous records survive and rerunning completes the batch.
+                    _, created = generate_monthly_contribution(participant, period_start)
+                    created_count += int(created)
+                    skipped_count += int(not created)
     except Exception:
         db.session.rollback()
         raise
@@ -148,10 +159,12 @@ def generate_contributions_for_active_participants(target_period: date = None) -
         "created": created_count,
         "skipped": skipped_count,
         "total_active": len(active_participants),
+        "would_create": would_create,
+        "dry_run": dry_run,
     }
 
 
-def mark_overdue_contributions(reference_date: date = None, as_of_date: date = None) -> int:
+def mark_overdue_contributions(reference_date: date = None, as_of_date: date = None, *, dry_run: bool = False) -> int:
     """
     Scans for UNPAID contributions past their due date and transitions them to OVERDUE.
     PAID contributions are strictly untouched.
@@ -161,28 +174,22 @@ def mark_overdue_contributions(reference_date: date = None, as_of_date: date = N
     if target_date is None:
         target_date = date.today()
 
-    overdue_items = db.session.execute(
-        select(Contribution).filter(
-            Contribution.status == "UNPAID",
-            Contribution.due_date < target_date,
-        )
-    ).scalars().all()
-
-    count = 0
-    now = datetime.now(timezone.utc)
-    for c in overdue_items:
-        c.status = "OVERDUE"
-        c.updated_at = now
-        count += 1
-
-    if count > 0:
-        try:
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            raise
-
-    return count
+    eligible = (Contribution.status == "UNPAID", Contribution.due_date < target_date)
+    try:
+        if dry_run:
+            from sqlalchemy import func
+            with db.session.no_autoflush:
+                return db.session.execute(select(func.count()).select_from(Contribution).where(*eligible)).scalar_one()
+        # Evaluate status in the UPDATE itself, not from a stale ORM snapshot.
+        # A contribution already paid by a concurrent transaction cannot match.
+        result = db.session.execute(update(Contribution).where(*eligible).values(
+            status="OVERDUE", updated_at=datetime.now(timezone.utc)
+        ))
+        db.session.commit()
+        return result.rowcount
+    except Exception:
+        db.session.rollback()
+        raise
 
 
 def validate_contribution_ownership(contribution: Contribution, participant_id: int) -> bool:

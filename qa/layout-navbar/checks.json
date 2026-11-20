@@ -1,0 +1,1912 @@
+[
+  {
+    "check": "public 1366x768 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        490.65625,
+        490.65625,
+        490.65625,
+        490.65625
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "public 1366x768 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1366x768 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1366x768 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1366x768 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1366x768 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1366x768 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1366x768 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1440x900 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        562.203125,
+        562.203125,
+        562.203125,
+        562.203125
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "public 1440x900 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1440x900 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1440x900 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1440x900 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1440x900 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1440x900 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1440x900 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1920x1080 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        686.859375,
+        686.859375,
+        686.859375,
+        686.859375
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "public 1920x1080 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1920x1080 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1920x1080 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1920x1080 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1920x1080 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1920x1080 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1920x1080 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1024x768 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        479.578125,
+        479.578125,
+        479.578125,
+        479.578125
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3.015873015873016,
+      "logoWidth": 190,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "public 1024x768 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1024x768 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1024x768 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1024x768 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1024x768 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1024x768 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 1024x768 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 768x1024 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        691.453125,
+        691.453125,
+        897.4375,
+        897.4375
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "public 768x1024 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 768x1024 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 768x1024 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 768x1024 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 768x1024 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 768x1024 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 768x1024 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 768x1024 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 375x812 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        1012.578125,
+        1218.5625,
+        1424.546875,
+        1630.53125
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "public 375x812 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 375x812 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 375x812 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 375x812 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 375x812 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 375x812 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 375x812 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 375x812 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 320x740 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        1122.5,
+        1349.28125,
+        1555.265625,
+        1782.046875
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "public 320x740 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 320x740 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 320x740 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 320x740 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 320x740 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 320x740 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 320x740 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public 320x740 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public /login 375 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public /login 375 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public /assistant 375 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public /assistant 375 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public /login 1440 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public /login 1440 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public /assistant 1440 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "public /assistant 1440 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          40.98,
+          1325.02
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        490.65625,
+        490.65625,
+        490.65625,
+        490.65625
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "citizen 1366x768 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 opening profile closes administration",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 escape closes dropdown",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 outside click closes dropdown",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1366x768 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          43.2,
+          1396.8
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        562.203125,
+        562.203125,
+        562.203125,
+        562.203125
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "citizen 1440x900 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 opening profile closes administration",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 escape closes dropdown",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 outside click closes dropdown",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1440x900 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ],
+        [
+          168,
+          1752
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        686.859375,
+        686.859375,
+        686.859375,
+        686.859375
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "citizen 1920x1080 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 opening profile closes administration",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 escape closes dropdown",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 outside click closes dropdown",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1920x1080 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ],
+        [
+          30.72,
+          993.28
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        479.578125,
+        479.578125,
+        479.578125,
+        479.578125
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3.015873015873016,
+      "logoWidth": 190,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "citizen 1024x768 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 opening profile closes administration",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 escape closes dropdown",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 outside click closes dropdown",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 1024x768 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 768x1024 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        691.453125,
+        691.453125,
+        897.4375,
+        897.4375
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "citizen 768x1024 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 768x1024 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 768x1024 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 768x1024 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 768x1024 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 768x1024 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 768x1024 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 768x1024 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 375x812 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        1012.578125,
+        1218.5625,
+        1424.546875,
+        1630.53125
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "citizen 375x812 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 375x812 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 375x812 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 375x812 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 375x812 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 375x812 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 375x812 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 375x812 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 320x740 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        1122.5,
+        1349.28125,
+        1555.265625,
+        1782.046875
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "citizen 320x740 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 320x740 shared container edges",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 320x740 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 320x740 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 320x740 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 320x740 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 320x740 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen 320x740 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/dashboard 375 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/dashboard 375 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/profile 375 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/profile 375 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/card 375 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/card 375 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/family 375 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/family 375 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/dashboard 1440 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/dashboard 1440 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/profile 1440 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/profile 1440 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/card 1440 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/card 1440 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/family 1440 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen /citizen/family 1440 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "administration active indicator follows submenu route",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "citizen existing logout form succeeds",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1366x768 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          40.98,
+          1325.02
+        ],
+        [
+          296.98,
+          1325.02
+        ],
+        [
+          296.98,
+          1325.02
+        ],
+        [
+          296.98,
+          1325.02
+        ],
+        [
+          296.98,
+          1325.02
+        ],
+        [
+          296.98,
+          1325.02
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        481.09375,
+        481.09375,
+        481.09375,
+        481.09375
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "admin 1366x768 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1366x768 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1366x768 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1366x768 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1366x768 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1366x768 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1440x900 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          43.2,
+          1396.8
+        ],
+        [
+          299.2,
+          1396.8
+        ],
+        [
+          299.2,
+          1396.8
+        ],
+        [
+          299.2,
+          1396.8
+        ],
+        [
+          299.2,
+          1396.8
+        ],
+        [
+          299.2,
+          1396.8
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        551,
+        551,
+        551,
+        551
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "admin 1440x900 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1440x900 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1440x900 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1440x900 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1440x900 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1440x900 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1920x1080 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          48,
+          1872
+        ],
+        [
+          304,
+          1872
+        ],
+        [
+          304,
+          1872
+        ],
+        [
+          304,
+          1872
+        ],
+        [
+          304,
+          1872
+        ],
+        [
+          304,
+          1872
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        692.859375,
+        692.859375,
+        692.859375,
+        692.859375
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 210,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "admin 1920x1080 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1920x1080 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1920x1080 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1920x1080 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1920x1080 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1920x1080 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1024x768 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          30.72,
+          993.28
+        ],
+        [
+          286.72,
+          993.28
+        ],
+        [
+          286.72,
+          993.28
+        ],
+        [
+          286.72,
+          993.28
+        ],
+        [
+          286.72,
+          993.28
+        ],
+        [
+          286.72,
+          993.28
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        601.25,
+        601.25,
+        601.25,
+        601.25
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3.015873015873016,
+      "logoWidth": 190,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "admin 1024x768 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1024x768 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1024x768 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1024x768 four services on one row",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1024x768 desktop logo width",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 1024x768 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 768x1024 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ],
+        [
+          23.04,
+          744.96
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        691.453125,
+        691.453125,
+        897.4375,
+        897.4375
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "admin 768x1024 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 768x1024 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 768x1024 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 768x1024 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 768x1024 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 768x1024 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 768x1024 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 375x812 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ],
+        [
+          20,
+          355
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        1012.578125,
+        1218.5625,
+        1424.546875,
+        1630.53125
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "admin 375x812 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 375x812 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 375x812 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 375x812 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 375x812 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 375x812 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 375x812 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 320x740 no overflow or navbar collision",
+    "pass": true,
+    "details": {
+      "containers": [
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          20,
+          300
+        ]
+      ],
+      "overflow": false,
+      "navbarHeight": 70,
+      "cardTops": [
+        1122.5,
+        1349.28125,
+        1555.265625,
+        1782.046875
+      ],
+      "logoLoaded": true,
+      "logoRatio": 3,
+      "logoWidth": 180,
+      "mobileCollision": false,
+      "collision": false
+    }
+  },
+  {
+    "check": "admin 320x740 mobile logo and menu do not overlap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 320x740 navbar 70px",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 320x740 proportional loaded logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 320x740 drawer opens without overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 320x740 drawer focus trap",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 320x740 escape closes and restores focus",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin 320x740 navigation destinations resolve",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin /admin/dashboard 375 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin /admin/dashboard 375 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin /admin/dashboard 1440 renders with shared logo",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin /admin/dashboard 1440 no overflow",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "admin existing logout form succeeds",
+    "pass": true,
+    "details": null
+  },
+  {
+    "check": "no JavaScript exceptions",
+    "pass": true,
+    "details": []
+  }
+]

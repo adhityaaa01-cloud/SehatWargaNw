@@ -57,7 +57,7 @@ class Stage9TestCase(unittest.TestCase):
         self.assertIn("bukan dokter dan tidak memberikan diagnosis medis", html)
         self.assertIn("Cari fasilitas terdekat", html)
         self.assertIn("Cara mengajukan layanan", html)
-        self.assertIn("leaflet", html.lower())
+        self.assertIn("map-settings", html)
         self.assertIn("assistant.js", html)
 
     # -------------------------------------------------------------

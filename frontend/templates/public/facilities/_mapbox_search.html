@@ -1,0 +1,25 @@
+{% if map_settings.configured %}
+<section class="mapbox-directory" aria-labelledby="mapbox-heading" data-mapbox-directory data-search-url="{{ url_for('facilities.mapbox_search') }}">
+  <header class="mapbox-directory-heading"><div><p class="mapbox-eyebrow">DIREKTORI FASILITAS</p><h2 id="mapbox-heading">Fasilitas Kesehatan</h2><p>Temukan fasilitas kesehatan di sekitar Anda.</p></div><span class="mapbox-source">Peta & pencarian oleh Mapbox</span></header>
+  <form class="mapbox-search-form" data-mapbox-form>
+    <div class="mapbox-search-fields">
+      <div class="mapbox-search-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><label class="sr-only" for="mapbox-query">Nama fasilitas</label><input id="mapbox-query" name="query" maxlength="150" placeholder="Cari nama fasilitas kesehatan…" autocomplete="off"></div>
+      <div class="mapbox-city-input"><label class="sr-only" for="mapbox-city">Kota atau kabupaten</label><input id="mapbox-city" name="city" maxlength="100" value="Lamongan" placeholder="Kota / kabupaten" required></div>
+      <button type="submit" class="btn btn-primary mapbox-search-submit">Cari</button>
+      <button type="button" class="btn btn-outline-primary mapbox-location" data-mapbox-location aria-label="Cari fasilitas di dekat saya" title="Cari fasilitas di dekat saya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 3-7 18-3-8-8-3 18-7Z"/></svg></button>
+    </div>
+    <fieldset class="mapbox-category-tabs"><legend class="sr-only">Jenis fasilitas</legend>
+      {% for code,label,icon in [('', 'Semua', 'all'),('HOSPITAL','Rumah Sakit','hospital'),('PUSKESMAS','Puskesmas','cross'),('CLINIC','Klinik','clinic'),('DENTAL_CLINIC','Dokter Gigi','clinic'),('PHARMACY','Apotek','cross')] %}
+      <label class="mapbox-category"><input type="radio" name="facility_type" value="{{ code }}" {% if not code %}checked{% endif %}>
+        {% if icon != 'all' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{% if icon == 'hospital' %}<path d="M7 21V3h10v18M3 21h18M3 21V9h4m10 0h4v12M10 7h4m-2-2v4M10 13h1m2 0h1M10 17h1m2 0h1"/>{% elif icon == 'cross' %}<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3Z"/>{% else %}<path d="M6 3v5a5 5 0 0 0 10 0V3M4 3h4m6 0h4M11 13v3a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/>{% endif %}</svg>{% endif %}<span>{{ label }}</span>
+      </label>{% endfor %}
+    </fieldset>
+  </form>
+  <div class="mapbox-result-heading"><p role="status" aria-live="polite" data-mapbox-status>Memuat fasilitas di Lamongan…</p><span class="mapbox-result-hint">Pilih fasilitas untuk melihat lokasinya</span></div>
+  <div class="mapbox-workspace">
+    <div class="mapbox-result-list" data-mapbox-results aria-label="Hasil pencarian fasilitas"><div class="mapbox-empty">Mencari fasilitas kesehatan…</div></div>
+    <div class="mapbox-map-panel" data-mapbox-map-wrap><div class="mapbox-map-canvas" data-mapbox-map aria-label="Peta hasil pencarian Mapbox"></div><div class="mapbox-map-placeholder" data-mapbox-placeholder><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Zm6-3v15m6-12v15"/></svg><span>Peta lokasi fasilitas</span></div></div>
+  </div>
+  <div class="mapbox-directory-footnote"><details><summary>Tentang hasil pencarian</summary><p>Hasil berasal dari pencarian tempat Mapbox. Maksimal 25 hasil kategori atau 10 hasil nama; unit rumah sakit dapat muncul terpisah. Konfirmasi alamat dan layanan langsung ke fasilitas. Hasil ini belum terhubung ke pengajuan layanan simulasi SehatWarga.</p><p data-mapbox-attribution></p></details></div>
+</section>
+{% endif %}

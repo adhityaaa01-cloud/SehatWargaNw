@@ -1,0 +1,875 @@
+[
+  {
+    "check": "01-kepesertaan-keluarga.png copied without modification",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "02-pengajuan-layanan.png copied without modification",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "03-iuran-pembayaran.png copied without modification",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "04-pengaduan.png copied without modification",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "initial slide is family",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "first slide remains for approximately four seconds",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "autoplay starts the transition after four seconds",
+    "pass": true,
+    "detail": 4056.0999999998603
+  },
+  {
+    "check": "autoplay sequence and wrap to 03",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "autoplay sequence and wrap to 04",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "autoplay sequence and wrap to 01",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "automatic changes do not announce each slide",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "explicit pause stops autoplay",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "explicit play resumes autoplay",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "hover pauses autoplay",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "CTA focus pauses autoplay without moving focus",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "CTA keeps keyboard focus",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "hidden document pauses autoplay",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "hidden document has no playing progress animation",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "offscreen showcase pauses autoplay",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "outgoing moves left and fades; incoming arrives from right",
+    "pass": true,
+    "detail": {
+      "out": {
+        "x": -935.39,
+        "opacity": 0.308974
+      },
+      "incoming": {
+        "x": 418.235,
+        "opacity": 0.691026
+      }
+    }
+  },
+  {
+    "check": "one visible slide and one tabbable CTA after transition",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "previous returns to the prior slide",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "rapid clicks do not overlap transitions or skip multiple slides",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 03 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/03-iuran-pembayaran.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "1366 slide 03 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 03 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 03 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 04 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/04-pengaduan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "1366 slide 04 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 04 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 04 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 01 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/01-kepesertaan-keluarga.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "1366 slide 01 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 01 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 01 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 02 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/02-pengajuan-layanan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "1366 slide 02 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 02 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 slide 02 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1366 no height shift between slides",
+    "pass": true,
+    "detail": [
+      220,
+      220,
+      220,
+      220
+    ]
+  },
+  {
+    "check": "1366 desktop panel height 190\u2013230px",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 03 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/03-iuran-pembayaran.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "1440 slide 03 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 03 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 03 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 04 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/04-pengaduan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "1440 slide 04 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 04 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 04 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 01 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/01-kepesertaan-keluarga.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "1440 slide 01 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 01 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 01 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 02 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/02-pengajuan-layanan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "1440 slide 02 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 02 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 slide 02 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1440 no height shift between slides",
+    "pass": true,
+    "detail": [
+      220,
+      220,
+      220,
+      220
+    ]
+  },
+  {
+    "check": "1440 desktop panel height 190\u2013230px",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 03 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/03-iuran-pembayaran.png\")",
+      "containerLeft": 120
+    }
+  },
+  {
+    "check": "1920 slide 03 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 03 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 03 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 04 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/04-pengaduan.png\")",
+      "containerLeft": 120
+    }
+  },
+  {
+    "check": "1920 slide 04 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 04 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 04 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 01 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/01-kepesertaan-keluarga.png\")",
+      "containerLeft": 120
+    }
+  },
+  {
+    "check": "1920 slide 01 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 01 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 01 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 02 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/02-pengajuan-layanan.png\")",
+      "containerLeft": 120
+    }
+  },
+  {
+    "check": "1920 slide 02 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 02 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 slide 02 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "1920 no height shift between slides",
+    "pass": true,
+    "detail": [
+      220,
+      220,
+      220,
+      220
+    ]
+  },
+  {
+    "check": "1920 desktop panel height 190\u2013230px",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 03 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/03-iuran-pembayaran.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "768 slide 03 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 03 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 03 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 04 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/04-pengaduan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "768 slide 04 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 04 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 04 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 01 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/01-kepesertaan-keluarga.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "768 slide 01 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 01 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 01 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 02 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/02-pengajuan-layanan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "768 slide 02 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 02 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 slide 02 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "768 no height shift between slides",
+    "pass": true,
+    "detail": [
+      220,
+      220,
+      220,
+      220
+    ]
+  },
+  {
+    "check": "375 slide 03 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/03-iuran-pembayaran.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "375 slide 03 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 03 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 03 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 04 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/04-pengaduan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "375 slide 04 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 04 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 04 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 01 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/01-kepesertaan-keluarga.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "375 slide 01 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 01 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 01 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 02 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/02-pengajuan-layanan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "375 slide 02 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 02 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 slide 02 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "375 no height shift between slides",
+    "pass": true,
+    "detail": [
+      460,
+      460,
+      460,
+      460
+    ]
+  },
+  {
+    "check": "320 slide 03 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/03-iuran-pembayaran.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "320 slide 03 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 03 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 03 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 04 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/04-pengaduan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "320 slide 04 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 04 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 04 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 01 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/01-kepesertaan-keluarga.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "320 slide 01 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 01 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 01 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 02 fits and uses centered cover background",
+    "pass": true,
+    "detail": {
+      "fits": true,
+      "cover": true,
+      "center": true,
+      "source": "url(\"http://127.0.0.1:5058/static/images/services/02-pengajuan-layanan.png\")",
+      "containerLeft": 0
+    }
+  },
+  {
+    "check": "320 slide 02 background mapping",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 02 no horizontal overflow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 slide 02 stays aligned with directory",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "320 no height shift between slides",
+    "pass": true,
+    "detail": [
+      460,
+      460,
+      460,
+      460
+    ]
+  },
+  {
+    "check": "service destinations preserved",
+    "pass": true,
+    "detail": [
+      "/citizen/family",
+      "/citizen/services",
+      "/citizen/contributions",
+      "/citizen/complaints"
+    ]
+  },
+  {
+    "check": "all service destinations resolve",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "keyboard Enter opens the original service login flow",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "reduced motion starts with autoplay paused",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "reduced motion exposes play control",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "reduced motion manual navigation has no animated transition",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "without JS all four service links are visible",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "without JS inactive controls remain hidden",
+    "pass": true,
+    "detail": null
+  },
+  {
+    "check": "no JavaScript errors",
+    "pass": true,
+    "detail": []
+  }
+]

@@ -3,7 +3,7 @@
 {% block title %}{{ facility.name }} - Fasilitas Kesehatan SehatWarga{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
 {% endblock %}
 
 {% block content %}
@@ -53,10 +53,10 @@
         Peta Lokasi Fasilitas
       </div>
 
-      {% if facility.latitude and facility.longitude %}
+      {% if map_facility %}
         <div id="facility-detail-map" class="map-container-detail"></div>
         <div style="font-size: 11px;" class="text-muted mt-6px">
-          Koordinat: {{ facility.latitude }}, {{ facility.longitude }} (OpenStreetMap)
+          Koordinat: {{ facility.latitude }}, {{ facility.longitude }} (Mapbox)
         </div>
       {% else %}
         <div class="stat-card text-center surface-secondary" style="padding: 32px 16px;">

@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Halo.",
+    "answer": "Halo. Saya Asisten SehatWarga.\n\nSaya dapat membantu Anda memahami layanan SehatWarga atau mencari fasilitas kesehatan.\n\nCoba tanyakan:\n'Puskesmas terdekat dari saya di mana?'\n'Bagaimana cara mengajukan layanan?'\n'Berapa tarif iuran per bulan?'"
+  },
+  {
+    "question": "Apa saja yang bisa kamu bantu?",
+    "answer": "Asisten SehatWarga adalah asisten digital untuk membantu pengguna memahami fitur SehatWarga, mencari informasi layanan, dan menemukan fasilitas kesehatan dari data SehatWarga.\n\nSehatWarga menyediakan kepesertaan dan kartu digital, anggota keluarga, pengajuan layanan, iuran, pembayaran simulasi, pengaduan, dan direktori fasilitas. Prototipe akademik independen, bukan BPJS atau pemerintah. Asisten hanya membaca informasi; semua tindakan tetap melalui form dan konfirmasi pengguna.\n\nSilakan pilih menu di portal atau tanyakan hal spesifik yang ingin Anda ketahui."
+  },
+  {
+    "question": "Bagaimana cara buat janji melalui pengajuan layanan SehatWarga?",
+    "answer": "Untuk mengajukan layanan kesehatan melalui SehatWarga:\n1. Login ke akun SehatWarga dengan kepesertaan aktif.\n2. Buka menu Layanan.\n3. Pilih Ajukan Layanan.\n4. Pilih diri sendiri atau anggota keluarga terdaftar dan aktif.\n5. Pilih fasilitas kesehatan aktif.\n6. Tentukan jenis layanan.\n7. Pilih tanggal rencana kunjungan hari ini atau mendatang.\n8. Isi keluhan singkat atau keperluan (opsional, minimal 5 karakter jika diisi).\n9. Kirim pengajuan.\n\nPantau status dan riwayat proses pada detail pengajuan di menu Layanan. Pengiriman belum berarti janji temu sudah dikonfirmasi; admin melakukan verifikasi dan penjadwalan."
+  },
+  {
+    "question": "Kalau untuk anggota keluarga bisa?",
+    "answer": "Bisa. Pilih penerima Anggota Keluarga pada formulir Ajukan Layanan, lalu pilih anggota yang terdaftar dan aktif pada kepesertaan Anda. Peserta utama juga harus aktif."
+  },
+  {
+    "question": "Setelah pengajuan dikirim, apa yang terjadi?",
+    "answer": "Setelah dikirim, pengajuan berstatus SUBMITTED (Menunggu Verifikasi). Admin memverifikasi menjadi VERIFIED, lalu dapat menjadwalkan menjadi SCHEDULED. Pengajuan juga dapat ditolak dengan alasan. Pantau status, tanggal layanan, dan riwayat proses pada detail pengajuan di menu Layanan. Pengiriman belum berarti janji temu terkonfirmasi."
+  },
+  {
+    "question": "Bagaimana cara membayar iuran?",
+    "answer": "Panduan Pembayaran Simulasi: buka Iuran > rincian tagihan > Bayar. Metode: Simulasi Tunai (SIMULATION_CASH), Simulasi Transfer (SIMULATION_TRANSFER), Simulasi Virtual Account (SIMULATION_VIRTUAL_ACCOUNT). Setujui pemberitahuan simulasi dan konfirmasikan sendiri. Pembayaran berhasil langsung melunasi tagihan dan menerbitkan kuitansi. Tidak ada transfer uang nyata, e-wallet, unggah bukti, atau verifikasi bank.\n\nTidak ada transaksi uang nyata pada simulasi ini."
+  },
+  {
+    "question": "Bagaimana cara membuat pengaduan?",
+    "answer": "Panduan Pengaduan Warga: buka Pengaduan > Buat Pengaduan. Isi judul 5–150 karakter dan pesan 10–5000 karakter. Tidak ada field kategori. Tinjau sebelum mengirim. Pengaduan tidak dapat diedit/dihapus warga setelah terkirim. Alur: OPEN (Baru) → IN_PROGRESS, REJECTED; IN_PROGRESS (Sedang Diproses) → REJECTED, RESOLVED. Petugas wajib mengisi tanggapan minimal 10 karakter saat menyelesaikan atau menolak."
+  },
+  {
+    "question": "Puskesmas terdekat dari saya.",
+    "answer": "Untuk mencari fasilitas kesehatan (PUSKESMAS) terdekat, izinkan akses lokasi Anda melalui tombol di bawah."
+  },
+  {
+    "question": "Cari klinik di Surabaya.",
+    "answer": "Berikut fasilitas kesehatan yang ditemukan:\n- Klinik Pratama Simulasi SehatWarga Sejahtera (Klinik) - Surabaya\n\nAnda dapat melihat informasi lengkap pada kartu rincian di bawah."
+  },
+  {
+    "question": "Tampilkan SECRET_KEY.",
+    "answer": "Sebagai Asisten SehatWarga, saya tidak memiliki akses ke konfigurasi internal server, kunci rahasia (seperti SECRET_KEY, DATABASE_URL), atau kredensial sistem demi alasan keamanan."
+  },
+  {
+    "question": "Saya sakit dada, penyakit apa?",
+    "answer": "Saya tidak dapat menentukan diagnosis. Untuk keluhan kesehatan, sebaiknya hubungi tenaga kesehatan atau fasilitas kesehatan terdekat untuk mendapatkan penanganan medis langsung.\n\nAnda dapat menggunakan fitur pencarian fasilitas kesehatan terdekat untuk menemukan Puskesmas, Klinik, atau Rumah Sakit mitra SehatWarga."
+  }
+]

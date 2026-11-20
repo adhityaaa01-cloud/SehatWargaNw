@@ -1,0 +1,23 @@
+........................................................................................................................... [ 62%]
+........................................................................ [ 98%]
+..                                                                       [100%]
+=============================== warnings summary ===============================
+tests/test_redesign_ai.py: 18 warnings
+tests/test_render_routes.py: 53 warnings
+tests/test_stage10.py: 64 warnings
+tests/test_stage3.py: 38 warnings
+tests/test_stage4.py: 59 warnings
+tests/test_stage5.py: 189 warnings
+tests/test_stage6.py: 140 warnings
+tests/test_stage7.py: 95 warnings
+tests/test_stage8.py: 83 warnings
+tests/test_stage9.py: 16 warnings
+  /home/adhitya/Documents/WPF/3/SehatWarga/.venv/lib/python3.14/site-packages/sqlalchemy/sql/schema.py:3627: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+tests/test_redesign_ai.py::AdapterSafetyTest::test_api_failure_and_timeout_fallback
+  /home/adhitya/Documents/WPF/3/SehatWarga/.venv/lib/python3.14/site-packages/google/genai/types.py:42: DeprecationWarning: '_UnionGenericAlias' is deprecated and slated for removal in Python 3.17
+    VersionedUnionType = Union[builtin_types.UnionType, _UnionGenericAlias]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+197 passed, 756 warnings, 93 subtests passed in 46.44s

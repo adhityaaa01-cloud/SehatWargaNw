@@ -3,6 +3,9 @@
 {% set active = request.path == href or (href != '/' and request.path.startswith(href + '/')) %}
 <a href="{{ href }}" class="nav-link{% if active %} active{% endif %}"{% if active %} aria-current="page"{% endif %}>{{ label }}</a>
 {%- endmacro %}
+{% macro chevron() -%}
+<svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+{%- endmacro %}
 {% set is_admin = current_user.is_authenticated and current_user.role == 'admin' %}
 <!DOCTYPE html>
 <html lang="id">
@@ -12,25 +15,17 @@
   <title>{% block title %}SehatWarga — Layanan dalam satu ruang{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/assistant.css') }}">
+  {% if request.endpoint in ['main.index', 'facilities.list_facilities'] %}<link rel="stylesheet" href="{{ url_for('static', filename='css/mapbox-directory.css') }}">{% endif %}
+  <script type="application/json" id="map-settings">{{ map_settings|tojson }}</script>
+  {% if map_settings.configured %}<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.25.0/mapbox-gl.css">{% endif %}
   {% block extra_css %}{% endblock %}
 </head>
 <body class="{% if is_admin %}admin-shell {% endif %}page-{{ (request.endpoint or 'unknown')|replace('.', '-') }}">
-  <div class="ambient-world" id="ambient-world" aria-hidden="true">
-    <div class="ambient-mesh"></div>
-    <div class="ambient-aurora aurora-teal"></div>
-    <div class="ambient-aurora aurora-blue"></div>
-    <div class="ambient-aurora aurora-violet"></div>
-    <div class="ambient-aurora aurora-coral"></div>
-    <div class="ambient-aurora aurora-amber"></div>
-    <div class="ambient-orbit orbit-a"></div>
-    <div class="ambient-orbit orbit-b"></div>
-    <div class="ambient-perspective-grid"></div>
-  </div>
   <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
-  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+
   <header class="navbar">
-    <div class="container navbar-container">
-      <a href="{{ url_for('main.index') }}" class="navbar-brand"><span class="brand-mark" aria-hidden="true"><i></i>s<span>+</span></span><span>SehatWarga<small>Portal layanan warga</small></span></a>
+    <div class="container page-container navbar-container">
+      <a href="{{ url_for('main.index') }}" class="navbar-brand"><img class="site-logo" src="{{ url_for('static', filename='images/sehatwarga-logo.png') }}" width="2172" height="724" alt="SehatWarga — Portal Layanan Warga"></a>
       <button type="button" id="nav-toggle" class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Buka menu navigasi">Menu <span aria-hidden="true">☰</span></button>
       <nav id="site-navigation" class="site-navigation" aria-label="Navigasi utama" tabindex="-1">
         <div class="drawer-heading"><strong>Menu SehatWarga</strong><button type="button" id="nav-close" class="btn" aria-label="Tutup menu navigasi">Tutup</button></div>
@@ -48,13 +43,13 @@
             {{ navlink('citizen.dashboard', 'Dashboard') }}
             {{ navlink('citizen.service_requests_list', 'Layanan') }}
             {{ navlink('facilities.list_facilities', 'Fasilitas') }}
-            <details class="nav-dropdown"><summary>Administrasi</summary><div class="dropdown-panel">
+            <details class="nav-dropdown"><summary>Administrasi {{ chevron() }}</summary><div class="dropdown-panel">
               {{ navlink('citizen.contributions_list', 'Iuran') }}
               {{ navlink('citizen.payments_list', 'Pembayaran') }}
               {{ navlink('citizen.complaints_list', 'Pengaduan') }}
               {{ navlink('citizen.family_list', 'Keluarga') }}
-              {{ navlink('assistant.chat_page', 'Asisten') }}
-            </div></details>
+              </div></details>
+            {{ navlink('assistant.chat_page', 'Asisten') }}
           {% else %}
             {{ navlink('main.index', 'Beranda') }}
             {{ navlink('facilities.list_facilities', 'Fasilitas Kesehatan') }}
@@ -65,7 +60,7 @@
         </div>
         <div class="nav-actions">
           {% if current_user.is_authenticated %}
-            <details class="nav-dropdown user-menu"><summary>{{ current_user.name }}</summary><div class="dropdown-panel">
+            <details class="nav-dropdown user-menu"><summary><span class="user-avatar" aria-hidden="true">{{ current_user.name[:1]|upper }}</span><span class="user-name" title="{{ current_user.name }}">{{ current_user.name }}</span>{{ chevron() }}</summary><div class="dropdown-panel">
               {% if current_user.role == 'citizen' %}
                 {{ navlink('citizen.profile', 'Profil Saya') }}
                 {{ navlink('citizen.card', 'Kartu Digital') }}
@@ -96,10 +91,12 @@
     </div>
     {% block content %}{% endblock %}
   </main>
-  <footer class="footer"><div class="container footer-content">
-    <strong class="footer-brand"><span class="footer-brand-mark" aria-hidden="true">S+</span>SehatWarga</strong><span>Prototype akademik independen.</span>
+  <footer class="footer"><div class="container{% if request.endpoint == 'main.index' %} page-container{% endif %} footer-content">
+    {% block footer_content %}
+    <a class="footer-brand" href="{{ url_for('main.index') }}"><img class="site-logo" src="{{ url_for('static', filename='images/sehatwarga-logo.png') }}" width="2172" height="724" alt="SehatWarga — Portal Layanan Warga" loading="lazy"></a><span>Prototype akademik independen.</span>
     <p class="footer-disclaimer">Bukan situs resmi BPJS atau lembaga pemerintah. Pembayaran dan layanan merupakan simulasi.</p>
     {% if request.endpoint != 'assistant.chat_page' %}<a href="{{ url_for('assistant.chat_page') }}" class="assistant-floating-btn" aria-label="Buka Asisten SehatWarga">Bantuan Asisten <span aria-hidden="true">↗</span></a>{% endif %}
+    {% endblock %}
   </div></footer>
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
   {% block extra_js %}{% endblock %}

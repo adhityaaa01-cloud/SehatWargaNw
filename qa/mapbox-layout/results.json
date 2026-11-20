@@ -1,0 +1,41 @@
+{
+  "live_initial_results": 25,
+  "checks": [
+    {
+      "width": 1440,
+      "layout": "PASS",
+      "overflow": false,
+      "list_selection": "PASS"
+    },
+    {
+      "width": 1024,
+      "layout": "PASS",
+      "overflow": false,
+      "list_selection": "PASS"
+    },
+    {
+      "width": 768,
+      "layout": "PASS",
+      "overflow": false,
+      "list_selection": "PASS"
+    },
+    {
+      "width": 375,
+      "layout": "PASS",
+      "overflow": false,
+      "list_selection": "PASS"
+    },
+    {
+      "width": 320,
+      "layout": "PASS",
+      "overflow": false,
+      "list_selection": "PASS"
+    }
+  ],
+  "category_switch": "PASS",
+  "error_preserves_results": "PASS",
+  "empty_state": "PASS",
+  "text_safety": "PASS",
+  "directory_route": "PASS",
+  "browser_errors": []
+}

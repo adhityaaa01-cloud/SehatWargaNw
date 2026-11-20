@@ -1,4 +1,4 @@
-/** Leaflet / OpenStreetMap. Device coordinates stay in this page's memory. */
+/** Mapbox. Device coordinates stay in this page's memory. */
 function calculateDistanceKm(lat1,lon1,lat2,lon2) {
   const rad=n=>n*Math.PI/180;
   const a=Math.sin(rad(lat2-lat1)/2)**2+Math.cos(rad(lat1))*Math.cos(rad(lat2))*Math.sin(rad(lon2-lon1)/2)**2;
@@ -15,15 +15,30 @@ function facilityPopup(f) {
 }
 function createFacilityMap(element,center,zoom) {
   if(!element || !element.isConnected) return null;
-  if(typeof L==='undefined') {element.textContent='Peta tidak dapat dimuat. Gunakan daftar fasilitas untuk melihat informasi.';element.setAttribute('role','status');return null;}
-  element.classList.add('skeleton');
-  const map=L.map(element).setView(center,zoom);
-  const status=facilityNode('p','Memuat peta…','small muted');status.setAttribute('role','status');element.after(status);
-  const tiles=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(map);
-  let errors=false;
-  tiles.on('tileerror',()=>{element.classList.remove('skeleton');errors=true;status.textContent='Peta tidak tersedia sepenuhnya. Informasi fasilitas tetap dapat dibaca pada daftar.';});
-  tiles.on('load',()=>{element.classList.remove('skeleton');if(!errors)status.textContent='';});
-  return map;
+  const settings=JSON.parse(document.getElementById('map-settings')?.textContent||'{}');
+  if(!settings.configured || !window.mapboxgl || !mapboxgl.supported()) {
+    element.textContent='Peta Mapbox tidak tersedia. Informasi fasilitas tetap dapat dibaca pada daftar.';
+    element.setAttribute('role','status');return null;
+  }
+  const status=facilityNode('p','Memuat peta Mapbox…','small muted');status.setAttribute('role','status');element.after(status);
+  try {
+    const map=new mapboxgl.Map({container:element,accessToken:settings.token,style:settings.style,center:[center[1],center[0]],zoom});
+    map.addControl(new mapboxgl.NavigationControl(),'top-right');
+    const timeout=setTimeout(()=>{status.textContent='Peta belum dapat dimuat. Daftar fasilitas tetap tersedia.';},15000);
+    map.on('load',()=>{clearTimeout(timeout);status.textContent='';element.dataset.mapLoaded='true';});
+    map.on('error',()=>{clearTimeout(timeout);status.textContent='Peta Mapbox gagal dimuat. Daftar fasilitas tetap tersedia.';});
+    map.on('remove',()=>{clearTimeout(timeout);status.remove();});
+    return map;
+  } catch {status.textContent='Peta Mapbox tidak tersedia pada perangkat ini.';return null;}
+}
+function addFacilityMarker(map,facility,content,color='#102F46') {
+  return new mapboxgl.Marker({color}).setLngLat([facility.lng,facility.lat])
+    .setPopup(new mapboxgl.Popup({offset:24}).setDOMContent(content||facilityPopup(facility))).addTo(map);
+}
+function fitFacilityMap(map,facilities,padding=32,maxZoom=14) {
+  const points=facilities.filter(validFacilityCoordinates);if(!points.length)return;
+  const bounds=new mapboxgl.LngLatBounds();points.forEach(f=>bounds.extend([f.lng,f.lat]));
+  map.fitBounds(bounds,{padding,maxZoom,duration:0});
 }
 function initFacilityListMap(mapId,facilitiesData) {
   const element=document.getElementById(mapId);
@@ -34,17 +49,17 @@ function initFacilityListMap(mapId,facilitiesData) {
   let location=null;
   const showLocation = () => {
     if(!map || !location) return;
-    if(userMarker) map.removeLayer(userMarker);
-    userMarker=L.circleMarker(location,{radius:7,color:'#0B8179'}).addTo(map).bindPopup(facilityNode('strong','Posisi Anda'));
-    map.setView(location,12);
+    if(userMarker) userMarker.remove();
+    userMarker=addFacilityMarker(map,{lat:location[0],lng:location[1]},facilityNode('strong','Posisi Anda'),'#0B8179');
+    map.flyTo({center:[location[1],location[0]],zoom:12});
   };
   const lazyMap=element&&facilities.length?window.SehatWarga.whenNearViewport(element,async()=>{
     try {await window.SehatWarga.loadMapLibrary();} catch { /* Existing unavailable-map response below. */ }
     if(!element.isConnected) return;
     map=createFacilityMap(element,[facilities[0].lat,facilities[0].lng],11);
     if(map){
-      facilities.forEach(f=>L.marker([f.lat,f.lng]).addTo(map).bindPopup(facilityPopup(f)));
-      map.fitBounds(facilities.map(f=>[f.lat,f.lng]),{padding:[32,32],maxZoom:14});
+      facilities.forEach(f=>addFacilityMarker(map,f));
+      fitFacilityMap(map,facilities);
       showLocation();
     }
   }):null;
@@ -72,6 +87,6 @@ function initFacilityDetailMap(mapId,facility) {
     try {await window.SehatWarga.loadMapLibrary();} catch { /* Existing unavailable-map response below. */ }
     if(!element.isConnected) return;
     const map=createFacilityMap(element,[facility.lat,facility.lng],15);
-    if(map)L.marker([facility.lat,facility.lng]).addTo(map).bindPopup(facilityPopup(facility)).openPopup();
+    if(map)addFacilityMarker(map,facility).togglePopup();
   });
 }

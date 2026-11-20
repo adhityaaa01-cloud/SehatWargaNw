@@ -1,0 +1,17 @@
+[Unit]
+Description=SehatWarga monthly contribution generation
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=@SERVICE_USER@
+WorkingDirectory=@PROJECT_ROOT@
+ExecStart="@PROJECT_ROOT@/.venv/bin/python" "@PROJECT_ROOT@/scripts/jobs/run_monthly_billing.py"
+Environment=PYTHONUNBUFFERED=1
+UMask=0077
+NoNewPrivileges=true
+TimeoutStartSec=31min
+Restart=no
+StandardOutput=journal
+StandardError=journal

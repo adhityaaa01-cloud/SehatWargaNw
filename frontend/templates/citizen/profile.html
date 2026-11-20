@@ -72,7 +72,7 @@
 
       <div class="profile-field">
         <span class="profile-field-label">Tanggal Terdaftar</span>
-        <span class="profile-field-value">{{ participant.registered_at.strftime('%d %B %Y %H:%M') if participant.registered_at else '-' }} WIB</span>
+        <span class="profile-field-value">{{ participant.registered_at|wib_datetime }}</span>
       </div>
     </div>
 

@@ -1,0 +1,1399 @@
+{
+  "checks": 274,
+  "passed": 273,
+  "failed": 1,
+  "javascript_errors": [],
+  "external_request_failures": [
+    "https://a.tile.openstreetmap.org/11/1662/1065.png",
+    "https://a.tile.openstreetmap.org/11/1663/1064.png",
+    "https://a.tile.openstreetmap.org/11/1664/1066.png",
+    "https://a.tile.openstreetmap.org/11/1665/1065.png",
+    "https://a.tile.openstreetmap.org/11/1666/1064.png",
+    "https://a.tile.openstreetmap.org/11/1667/1066.png",
+    "https://b.tile.openstreetmap.org/11/1663/1065.png",
+    "https://b.tile.openstreetmap.org/11/1664/1064.png",
+    "https://b.tile.openstreetmap.org/11/1665/1066.png",
+    "https://b.tile.openstreetmap.org/11/1666/1065.png",
+    "https://b.tile.openstreetmap.org/11/1667/1064.png",
+    "https://c.tile.openstreetmap.org/11/1662/1064.png",
+    "https://c.tile.openstreetmap.org/11/1663/1066.png",
+    "https://c.tile.openstreetmap.org/11/1664/1065.png",
+    "https://c.tile.openstreetmap.org/11/1665/1064.png",
+    "https://c.tile.openstreetmap.org/11/1666/1066.png",
+    "https://c.tile.openstreetmap.org/11/1667/1065.png"
+  ],
+  "database": "disposable SQLite :memory:",
+  "physical_printer_dialog": "MANUAL CHECK REQUIRED",
+  "checks_detail": [
+    {
+      "check": "Registration creates user and participant alpha",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Registration creates user and participant beta",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Duplicate email rejected without new participant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Incorrect credentials rejected",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Citizen/admin dashboard and sessions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Profile identity persists across requests",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Profile existing read-only contract",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Card name number class and status",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Family create edit persisted",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Facilities search and type filter",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Facility detail and stored coordinates",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Live Leaflet marker rendered",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Leaflet uses database coordinates",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Live map tiles loaded",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Service submission self",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Service submission family",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Service submission self",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Service submission self",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Citizen cancellation",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Endpoint POST /admin/services/6/complete",
+      "pass": true,
+      "details": 302
+    },
+    {
+      "check": "Invalid SUBMITTED to COMPLETED rejected",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Admin verifies 6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Admin schedules 6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Completed service and ordered audit history 6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Admin verifies 7",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Admin schedules 7",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Completed service and ordered audit history 7",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Rejected service reason reaches citizen",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Family deactivation persisted",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Inactive family excluded from request choices",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Contribution generator idempotency",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Database unique participant and billing period enforced",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Contribution period class rate due date and status",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Invalid payment method and missing agreement rejected",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Simulated payment ignores amount manipulation and marks PAID",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Receipt contains participant and payment identifiers",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Endpoint POST /citizen/contributions/5/pay",
+      "pass": true,
+      "details": 302
+    },
+    {
+      "check": "Duplicate payment blocked",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Payment history opens receipt",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Admin payment list contains transaction",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Admin contribution detail shows paid transaction",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Complaint OPEN and ticket selesai",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Complaint OPEN and ticket ditolak",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Complaint IN_PROGRESS 4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Complaint RESOLVED and admin response visible",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Complaint IN_PROGRESS 5",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Complaint REJECTED and admin response visible",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Ownership GET /citizen/family/3",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Ownership GET /citizen/family/3/edit",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Ownership GET /citizen/services/6",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Ownership GET /citizen/contributions/5",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Ownership GET /citizen/contributions/5/pay",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Ownership GET /citizen/payments/2",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Ownership GET /citizen/complaints/4",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Endpoint POST /citizen/family/3/edit",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Endpoint POST /citizen/family/3/remove",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Endpoint POST /citizen/services/6/cancel",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Endpoint POST /citizen/contributions/5/pay",
+      "pass": true,
+      "details": 404
+    },
+    {
+      "check": "Profile query cannot select another participant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Citizen role GET /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Citizen role GET /admin/facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Citizen role GET /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Citizen role GET /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Citizen role GET /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Citizen role GET /admin/complaints",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Endpoint POST /admin/services/6/verify",
+      "pass": true,
+      "details": 403
+    },
+    {
+      "check": "Endpoint POST /admin/services/6/complete",
+      "pass": true,
+      "details": 403
+    },
+    {
+      "check": "Endpoint POST /admin/services/6/reject",
+      "pass": true,
+      "details": 403
+    },
+    {
+      "check": "Endpoint POST /admin/services/6/schedule",
+      "pass": true,
+      "details": 403
+    },
+    {
+      "check": "Endpoint POST /admin/contributions/generate",
+      "pass": true,
+      "details": 403
+    },
+    {
+      "check": "Endpoint POST /admin/complaints/4/resolve",
+      "pass": true,
+      "details": 403
+    },
+    {
+      "check": "Guest redirects /citizen/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Guest redirects /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Guest redirects /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Guest redirects /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Endpoint POST /citizen/services/6/cancel",
+      "pass": true,
+      "details": 302
+    },
+    {
+      "check": "Missing CSRF rejected on mutation",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Authorization probes leave target records intact",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "participant-card print button invokes browser print",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "participant-card print hides navbar and action controls",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "participant-card print content complete",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "participant-card print text is not clipped",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "payment-receipt print button invokes browser print",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "payment-receipt print hides navbar and action controls",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "payment-receipt print content complete",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "payment-receipt print text is not clipped",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "long-name-card print button invokes browser print",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "long-name-card print hides navbar and action controls",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "long-name-card print content complete",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "long-name-card print text is not clipped",
+      "pass": false,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /register",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /register",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /login",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /login",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /facilities/1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /facilities/1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer opens guest 375",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer closes guest 375",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/card",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/card",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/family/add",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/family/add",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/services/request",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/services/request",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/payments/2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/payments/2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/complaints/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/complaints/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /citizen/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /citizen/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /assistant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /assistant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer opens citizen 375",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer closes citizen 375",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /admin/facilities/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /admin/facilities/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /admin/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /admin/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 375 /admin/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 375 /admin/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer opens admin 375",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer closes admin 375",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /register",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /register",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /login",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /login",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /facilities/1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /facilities/1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer opens guest 768",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer closes guest 768",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/card",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/card",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/family/add",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/family/add",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/services/request",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/services/request",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/payments/2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/payments/2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/complaints/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/complaints/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /citizen/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /citizen/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /assistant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /assistant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer opens citizen 768",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer closes citizen 768",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /admin/facilities/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /admin/facilities/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /admin/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /admin/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 768 /admin/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 768 /admin/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer opens admin 768",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Navbar drawer closes admin 768",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /register",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /register",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /login",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /login",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /facilities/1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /facilities/1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/card",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/card",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/family/add",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/family/add",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/services/request",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/services/request",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/payments/2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/payments/2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/complaints/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/complaints/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /citizen/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /citizen/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /assistant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /assistant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /admin/facilities/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /admin/facilities/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /admin/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /admin/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1024 /admin/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1024 /admin/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /register",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /register",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /login",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /login",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /facilities",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /facilities/1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /facilities/1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/profile",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/card",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/card",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/family/add",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/family/add",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/services/request",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/services/request",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/payments/2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/payments/2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/complaints/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/complaints/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /citizen/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /citizen/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /assistant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /assistant",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /admin/dashboard",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /admin/facilities/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /admin/facilities/create",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /admin/services",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /admin/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /admin/services/6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /admin/contributions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /admin/payments",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Responsive 1440 /admin/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Controls reachable 1440 /admin/complaints/4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Assistant fallback remains functional",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Endpoint POST /logout",
+      "pass": true,
+      "details": 302
+    },
+    {
+      "check": "Logout invalidates session",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "No JavaScript exceptions",
+      "pass": true,
+      "details": []
+    }
+  ]
+}

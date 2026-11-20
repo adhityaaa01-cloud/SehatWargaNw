@@ -115,7 +115,7 @@
                   <a href="{{ url_for('citizen.payment_detail', payment_id=p.id) }}">{{ p.payment_number }}</a>
                 </td>
                 <td class="text-sm">
-                  {{ p.created_at.strftime('%d %b %Y, %H:%M WIB') if p.created_at else '-' }}
+                  {{ p.created_at|wib_datetime('%d %b %Y, %H:%M WIB') }}
                 </td>
                 <td>
                   {{ payment_methods.get(p.payment_method, p.payment_method) }}

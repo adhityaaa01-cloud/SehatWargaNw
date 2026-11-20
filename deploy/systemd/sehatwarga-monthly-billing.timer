@@ -1,0 +1,12 @@
+[Unit]
+Description=SehatWarga monthly billing at 00:15 WIB on day 1
+
+[Timer]
+OnCalendar=*-*-01 00:15:00 Asia/Jakarta
+AccuracySec=1s
+RandomizedDelaySec=0
+Persistent=true
+Unit=sehatwarga-monthly-billing.service
+
+[Install]
+WantedBy=timers.target
