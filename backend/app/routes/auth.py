@@ -56,7 +56,7 @@ def login():
     if current_user.is_authenticated:
         if current_user.role == "admin":
             return redirect(url_for("admin.dashboard"))
-        return redirect(url_for("citizen.dashboard"))
+        return redirect(url_for("main.index"))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -92,7 +92,7 @@ def login():
         # Default redirect according to role
         if user.role == "admin":
             return redirect(url_for("admin.dashboard"))
-        return redirect(url_for("citizen.dashboard"))
+        return redirect(url_for("main.index"))
 
     return render_template("auth/login.html", form=form)
 

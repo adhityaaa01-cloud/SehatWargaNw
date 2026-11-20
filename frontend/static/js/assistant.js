@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const statusLabel=document.getElementById('assistant-status');
   let readyStatus='MEMERIKSA';
   const history=[];
+  const archive=document.getElementById('chat-history');
+  let thread=form.dataset.thread;
+  function remember(question,answer) {
+    history.push({role:'user',content:question},{role:'assistant',content:answer.slice(0,2000)});
+    while(history.length>10 || history.reduce((n,m)=>n+m.content.length,0)>10000)history.shift();
+  }
   let locationContext=null;
   function updateStatus(data) {if(data?.label){readyStatus=data.label;if(statusLabel)statusLabel.textContent=readyStatus;}}
   async function refreshStatus(){try{const r=await fetch('/assistant/status');if(r.ok)updateStatus(await r.json());}catch{readyStatus='Status AI belum dapat diperiksa';if(statusLabel)statusLabel.textContent=readyStatus;}}
@@ -41,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     r.append(el('div','message-avatar',user?'Anda':'SW'));
     const bubble=el('div','message-bubble'); bubble.append(el('div','message-text',text)); r.append(bubble); messages.append(r);
     // Bound DOM and map resources; no durable chat storage.
-    while(messages.children.length>40) {
+    while(!archive && messages.children.length>40) {
       const first=messages.firstElementChild;
       pendingMaps.forEach((job,element)=>{if(first.contains(element)){job.cancel();pendingMaps.delete(element);}});
       maps.filter(m=>first.contains(m.getContainer())).forEach(m=>{m.remove();maps.splice(maps.indexOf(m),1);}); first.remove();
@@ -61,8 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
       try {data=await res.json();} catch {throw new Error('Respons server tidak tersedia. Muat ulang halaman jika sesi telah berakhir.');}
       if(!res.ok || !data.success) throw new Error(data.message || 'Permintaan gagal. Silakan coba kembali.');
       if(payload.message) {
-        history.push({role:'user',content:payload.message},{role:'assistant',content:(data.intent==='MEMBERSHIP_SUMMARY'?'Lihat kepesertaan melalui akun warga.':data.message).slice(0,2000)});
-        while(history.length>10 || history.reduce((n,m)=>n+m.content.length,0)>10000)history.shift();
+        remember(payload.message,data.intent==='MEMBERSHIP_SUMMARY'?'Lihat kepesertaan melalui akun warga.':data.message);
+        if(archive && !thread && data.thread) {
+          thread=data.thread;
+          const url=new URL(window.location.href);
+          url.searchParams.set('thread',thread);
+          window.history.replaceState(null,'',url);
+          const link=el('a','assistant-current-chat',payload.message.slice(0,60));
+          link.href=url.href;
+          document.getElementById('no-chat-history')?.remove();
+          archive.prepend(link);
+        }
         if(input.value.trim()===payload.message) {input.value='';input.style.height='';}
       }
       render(data);updateStatus(data.ai_status);
@@ -78,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!workspace.classList.contains('has-conversation') && currentTitle) currentTitle.textContent=message.slice(0,60);
     row(message,true);
     const payload={message,conversation_history:history.slice()};
+    if(thread)payload.thread=thread;
     if(locationContext && Date.now()-locationContext.time<300000 && /^(kalau|kalo|bagaimana dengan)/i.test(message)) payload.user_location=locationContext.coords;
     function retry(){request(form.dataset.chatUrl,payload,retry);}
     retry();
@@ -138,6 +154,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     if (follow) messages.scrollTop=messages.scrollHeight;
+  }
+  const transcript=JSON.parse(document.getElementById('chat-transcript')?.textContent || '[]');
+  if(transcript.length) {
+    currentTitle.textContent=transcript[0].question.slice(0,60);
+    for(const turn of transcript) {
+      row(turn.question,true);
+      row(turn.answer);
+      remember(turn.question,turn.answer.startsWith('Status kepesertaan Anda:') ? 'Lihat kepesertaan melalui akun warga.' : turn.answer);
+    }
+    messages.scrollTop=messages.scrollHeight;
   }
   form.addEventListener('submit',e=>{e.preventDefault();send(input.value);});
   input.addEventListener('input',()=>{input.style.height='auto';input.style.height=`${Math.min(input.scrollHeight,140)}px`;});

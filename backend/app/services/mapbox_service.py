@@ -83,10 +83,12 @@ def normalize(features):
             continue
         seen.add(identifier)
         labels = props.get('poi_category') or []
+        metadata = props.get('metadata')
+        phone = metadata.get('phone') if isinstance(metadata, dict) else None
         rows.append({'id': identifier, 'name': name[:200], 'lat': lat, 'lng': lng,
                      'address': str(props.get('full_address') or props.get('address') or '')[:500],
                      'type_label': ', '.join(str(x) for x in labels[:3]) if isinstance(labels, list) else '',
-                     'source': 'Mapbox', 'phone': '', 'city': ''})
+                     'source': 'Mapbox', 'phone': phone[:80] if isinstance(phone, str) else '', 'city': ''})
     return rows
 
 

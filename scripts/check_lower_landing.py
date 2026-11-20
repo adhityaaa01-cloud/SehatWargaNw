@@ -17,7 +17,7 @@ with sync_playwright() as p:
  for width,height in [(1366,768),(1440,900),(1920,1080),(768,1024),(375,812),(360,800)]:
   page.set_viewport_size({'width':width,'height':height});page.goto(base,wait_until='networkidle')
   page.locator('.directory-results').scroll_into_view_if_needed();expect(page.locator('#directory-cards .facility-card').first).to_be_visible()
-  assert page.request.get(base+'/static/images/healthcare-journey.png').status==200
+  assert page.request.get(base+'/static/images/healthcare-journey.svg').status==200
   assert page.locator('.journey-steps li').count()==3
   assert page.locator('.about-details li').count()==6
   assert page.locator('.journey-help').count()==0

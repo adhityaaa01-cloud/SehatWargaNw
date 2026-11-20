@@ -1,4 +1,9 @@
 import logging
+from flask import abort, make_response
+from flask_login import current_user
+from sqlalchemy import select
+from app.extensions import db
+from app.models.chat_turn import ChatTurn
 from flask import Blueprint, render_template, request, jsonify, session, current_app
 import time
 import secrets
@@ -65,7 +70,22 @@ def chat_page():
     Render the dedicated Asisten SehatWarga chat interface.
     Available to both public and authenticated citizens.
     """
-    return render_template("assistant/chat.html")
+    threads = []
+    turns = []
+    thread = request.args.get("thread")
+    if current_user.is_authenticated:
+        owned = select(ChatTurn).where(ChatTurn.user_id == current_user.id)
+        threads = db.session.scalars(owned.where(ChatTurn.first_turn.is_(True)).order_by(ChatTurn.id.desc())).all()
+        if thread:
+            turns = db.session.scalars(owned.where(ChatTurn.thread == thread).order_by(ChatTurn.id)).all()
+            if not turns:
+                abort(404)
+    elif thread:
+        abort(404)
+    response = make_response(render_template("assistant/chat.html", threads=threads, thread=thread,
+        transcript=[{"question": turn.question, "answer": turn.answer} for turn in turns]))
+    response.headers["Cache-Control"] = "private, no-store"
+    return response
 
 
 @assistant_bp.route("/chat", methods=["POST"])
@@ -89,11 +109,23 @@ def chat_api():
     user_location = data.get("user_location")
     conversation_history = data.get("conversation_history")
 
+    thread = data.get("thread")
+    if thread is not None and (not isinstance(thread, str) or len(thread) != 32 or
+            not current_user.is_authenticated or db.session.scalar(select(ChatTurn.id).where(
+                ChatTurn.user_id == current_user.id, ChatTurn.thread == thread).limit(1)) is None):
+        return jsonify(success=False, message="Percakapan tidak ditemukan."), 404
+
     result, status = process_assistant_chat(
         message=message,
         user_location=user_location,
         conversation_history=conversation_history,
     )
+    if current_user.is_authenticated and status == 200 and result.get("success"):
+        active_thread = thread or secrets.token_hex(16)
+        db.session.add(ChatTurn(user_id=current_user.id, thread=active_thread, first_turn=thread is None,
+                                question=message.strip(), answer=result["message"]))
+        db.session.commit()
+        result["thread"] = active_thread
     return jsonify(result), status
 
 

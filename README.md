@@ -442,6 +442,10 @@ Panduan Pengaduan Warga: buka Pengaduan > Buat Pengaduan. Isi judul 5–150 kara
 
 Cari fasilitas aktif di direktori Fasilitas berdasarkan nama, kota, atau jenis. Lokasi perangkat hanya digunakan setelah menekan Gunakan Lokasi Saya. Jarak merupakan perkiraan garis lurus. Koordinat pengguna tidak disimpan.
 
+Untuk melihat jalur perjalanan, aktifkan GPS lalu pilih fasilitas dari daftar atau pin peta. Panel rute menampilkan jarak mengikuti jalan dan estimasi waktu dengan pilihan mobil, jalan kaki, atau sepeda. Rute dihitung memakai [Mapbox Directions API](https://docs.mapbox.com/api/navigation/directions/) dengan `MAPBOX_PUBLIC_TOKEN`; koordinat dikirim langsung dari browser ke Mapbox dan tidak disimpan aplikasi. Tombol **Buka navigasi Google Maps** membuka panduan perjalanan lanjutan. Gunakan **Hitung ulang** untuk mencoba kembali atau **Hapus rute** untuk membersihkan jalur. Pada katalog internal, buka pin dan pilih **Lihat rute**; halaman detail fasilitas menyediakan tombol **Lihat rute dari lokasi saya**. GPS memerlukan izin browser dan HTTPS (atau localhost saat pengembangan).
+
+Pengujian browser terisolasi (SQLite, GPS dan Mapbox tiruan): `.venv/bin/python scripts/check_facility_routes.py`.
+
 ### General Help
 
 SehatWarga menyediakan kepesertaan dan kartu digital, anggota keluarga, pengajuan layanan, iuran, pembayaran simulasi, pengaduan, dan direktori fasilitas. Prototipe akademik independen, bukan BPJS atau pemerintah. Asisten hanya membaca informasi; semua tindakan tetap melalui form dan konfirmasi pengguna.

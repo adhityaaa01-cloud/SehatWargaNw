@@ -343,7 +343,7 @@ class Stage3TestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 403)
         self.assertIn("Akun Anda dinonaktifkan", res.get_data(as_text=True))
 
-        # Valid citizen login -> redirect /citizen/dashboard
+        # Valid citizen login -> redirect to home
         csrf = self.get_csrf_token("/login")
         res = self.client.post(
             "/login",
@@ -355,7 +355,7 @@ class Stage3TestCase(unittest.TestCase):
             follow_redirects=False,
         )
         self.assertEqual(res.status_code, 302)
-        self.assertIn("/citizen/dashboard", res.headers["Location"])
+        self.assertEqual(res.headers["Location"], "/")
 
         # Access citizen dashboard
         res_dash = self.client.get("/citizen/dashboard")

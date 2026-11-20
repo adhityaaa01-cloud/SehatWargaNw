@@ -32,7 +32,7 @@ with sync_playwright() as p:
   heights=page.locator('#directory-cards .facility-card').evaluate_all('els=>els.map(e=>e.getBoundingClientRect().height)')
   assert max(heights)-min(heights)<1
 
-  assert page.request.get(base+'/static/images/sehatwarga-direktori-map-bg.png').status==200
+  assert page.request.get(base+'/static/images/sehatwarga-direktori-map-bg.svg').status==200
   page.evaluate("window.scrollTo(0,document.querySelector('#direktori').offsetTop-160)")
   page.screenshot(path=str(out/f'transition-{width}.png'))
   page.locator('.directory-results').scroll_into_view_if_needed()

@@ -173,7 +173,7 @@ class Stage8TestCase(unittest.TestCase):
         )
         self.assertEqual(res.status_code, 302)
         # Must redirect safely to citizen dashboard, NOT external site
-        self.assertEqual(res.headers.get("Location"), "/citizen/dashboard")
+        self.assertEqual(res.headers.get("Location"), "/")
 
     def test_06_open_redirect_rejected_protocol_relative_url(self):
         self.create_citizen("redirect_proto")
@@ -189,7 +189,7 @@ class Stage8TestCase(unittest.TestCase):
             follow_redirects=False,
         )
         self.assertEqual(res.status_code, 302)
-        self.assertEqual(res.headers.get("Location"), "/citizen/dashboard")
+        self.assertEqual(res.headers.get("Location"), "/")
 
     def test_07_open_redirect_rejected_backslash_url(self):
         self.create_citizen("redirect_slash")
@@ -205,7 +205,7 @@ class Stage8TestCase(unittest.TestCase):
             follow_redirects=False,
         )
         self.assertEqual(res.status_code, 302)
-        self.assertEqual(res.headers.get("Location"), "/citizen/dashboard")
+        self.assertEqual(res.headers.get("Location"), "/")
 
     def test_08_open_redirect_citizen_blocked_from_admin_next(self):
         self.create_citizen("redirect_adm")
@@ -221,7 +221,7 @@ class Stage8TestCase(unittest.TestCase):
             follow_redirects=False,
         )
         self.assertEqual(res.status_code, 302)
-        self.assertEqual(res.headers.get("Location"), "/citizen/dashboard")
+        self.assertEqual(res.headers.get("Location"), "/")
 
     def test_09_open_redirect_admin_blocked_from_citizen_next(self):
         self.create_admin("redirect_cit")

@@ -11,7 +11,7 @@
 <div class="assistant-identity-icon">{{ assistant_icon() }}</div><h2>Asisten SehatWarga</h2><p class="assistant-sidebar-description">Asisten digital untuk membantu masyarakat memahami layanan dan mencari fasilitas kesehatan.</p><span class="assistant-badge">Prototipe Akademik</span>
 <a href="{{ url_for('assistant.chat_page') }}" class="btn btn-primary assistant-new-chat"><span aria-hidden="true">+</span> Percakapan Baru</a>
 <div class="assistant-session"><h3>Percakapan halaman ini</h3><a href="#chat-input" class="assistant-current-chat" aria-current="true" id="current-chat-title">Percakapan saat ini</a></div>
-<div class="assistant-history-note"><h3>Riwayat percakapan</h3><p>Riwayat lintas sesi belum tersedia. Percakapan hanya tampil selama halaman ini dibuka.</p></div>
+<div class="assistant-history-note"><h3>Riwayat percakapan</h3>{% if current_user.is_authenticated %}<nav id="chat-history" aria-label="Riwayat percakapan">{% for item in threads %}<a class="assistant-current-chat" href="{{ url_for('assistant.chat_page', thread=item.thread) }}">{{ item.question|truncate(60) }}</a>{% else %}<p id="no-chat-history">Belum ada percakapan tersimpan.</p>{% endfor %}</nav>{% else %}<p>Masuk untuk menyimpan dan membuka kembali percakapan.</p>{% endif %}</div>
 <a class="assistant-back-link" href="{{ url_for('main.index') }}">← Kembali ke beranda</a>
 </div></details></aside>
 <section class="assistant-card" aria-labelledby="assistant-heading">
@@ -22,7 +22,8 @@
 </div>
 <details class="conversation-suggestions"><summary>Saran pertanyaan</summary><div class="suggested-questions-area">{{ questions() }}{% if current_user.is_authenticated and current_user.role == 'citizen' %}<button type="button" class="suggested-pill" data-query="Ringkasan kepesertaan saya">Kepesertaan saya</button>{% else %}<button type="button" class="suggested-pill" data-query="Bagaimana cara daftar akun?">Cara daftar akun</button>{% endif %}<button type="button" class="suggested-pill" data-query="Cara membuat pengaduan">Cara membuat pengaduan</button></div></details>
     <div class="assistant-input-area">
-      <form id="chat-form" class="assistant-form" data-chat-url="{{ url_for('assistant.chat_api') }}" data-location-url="{{ url_for('assistant.location_api') }}">
+      <script type="application/json" id="chat-transcript">{{ transcript|tojson }}</script>
+      <form data-thread="{{ thread or '' }}" id="chat-form" class="assistant-form" data-chat-url="{{ url_for('assistant.chat_api') }}" data-location-url="{{ url_for('assistant.location_api') }}">
         <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}">
 
         <label for="chat-input" class="sr-only">Pertanyaan untuk asisten</label>
@@ -34,7 +35,7 @@
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
           </svg>
         </button>
-      </form><p class="assistant-privacy small muted">Bukan rekam medis. Percakapan tidak disimpan permanen. Jangan kirim identitas, sandi, atau data kesehatan pribadi. Pesan dapat diproses penyedia AI sesuai konfigurasi portal.</p>
+      </form><p class="assistant-privacy small muted">Bukan rekam medis. {% if current_user.is_authenticated %}Teks chat disimpan di riwayat akun Anda.{% else %}Chat tamu hanya tersedia selama halaman ini dibuka.{% endif %} Jangan kirim identitas, sandi, atau data kesehatan pribadi. Pesan dapat diproses penyedia AI sesuai konfigurasi portal.</p>
     </div>
 </section>
 <aside class="assistant-info" aria-label="Layanan cepat dan panduan"><details class="assistant-panel-details" open><summary>Layanan & informasi</summary><div class="assistant-panel-body">
@@ -43,7 +44,7 @@
 </nav>
 <div class="assistant-info-block"><h3>Mulai dari kebutuhan Anda</h3><p>Untuk mencari fasilitas, sebutkan nama kota atau izinkan akses lokasi. Untuk pengajuan, iuran, dan kepesertaan pribadi, masuk ke akun warga.</p></div>
 
-<details class="assistant-information-details"><summary>Batasan & privasi</summary><p>Asisten tidak memberikan diagnosis. Untuk kondisi darurat medis, datangi UGD terdekat.</p><p>Jangan kirim identitas, sandi, atau data kesehatan pribadi. Percakapan tidak disimpan permanen. Jawaban dapat memakai panduan lokal jika AI tidak tersedia.</p></details>
+<details class="assistant-information-details"><summary>Batasan & privasi</summary><p>Asisten tidak memberikan diagnosis. Untuk kondisi darurat medis, datangi UGD terdekat.</p><p>Jangan kirim identitas, sandi, atau data kesehatan pribadi. {% if current_user.is_authenticated %}Teks chat disimpan di riwayat akun Anda.{% else %}Chat tamu hanya tersedia selama halaman ini dibuka.{% endif %} Jawaban dapat memakai panduan lokal jika AI tidak tersedia.</p></details>
 </div></details></aside>
 </div>
 {% endblock %}

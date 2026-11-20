@@ -41,9 +41,16 @@ def reveal(page):
     page.wait_for_timeout(100)
 
 
+from base64 import b64decode
+from io import BytesIO
+from xml.etree import ElementTree
 from PIL import Image
-for asset in (ROOT / 'frontend' / 'static' / 'images' / 'services-3d').glob('*.png'):
-    with Image.open(asset) as image:
+assets = sorted((ROOT / 'frontend' / 'static' / 'images' / 'services-3d').glob('*.svg'))
+check('four service illustrations', len(assets) == 4)
+for asset in assets:
+    node = ElementTree.parse(asset).find('{http://www.w3.org/2000/svg}image')
+    data = node.attrib['{http://www.w3.org/1999/xlink}href'].split(',', 1)[1]
+    with Image.open(BytesIO(b64decode(data))) as image:
         check(asset.name + ' independent transparent illustration', image.size == (1536,1024) and image.mode == 'RGBA' and image.getextrema()[3][0] == 0)
 
 server = make_server('127.0.0.1', 5058, preview_app(), threaded=True)
@@ -150,7 +157,7 @@ try:
                     source:img.currentSrc,containerLeft:document.querySelector('.directory-container').getBoundingClientRect().left};
                 }''')
                 check(f'{width} slide {number} fits and contains complete 3D art', geometry['fits'] and geometry['contain'] and geometry['uncropped'] and geometry['loaded'], geometry)
-                expected_background = ['01-kepesertaan-keluarga.png', '02-pengajuan-layanan.png', '03-iuran-pembayaran.png', '04-pengaduan.png'][int(number)-1]
+                expected_background = ['01-kepesertaan-keluarga.svg', '02-pengajuan-layanan.svg', '03-iuran-pembayaran.svg', '04-pengaduan.svg'][int(number)-1]
                 check(f'{width} slide {number} illustration mapping', expected_background in geometry['source'])
                 check(f'{width} slide {number} no horizontal overflow', page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
                 check(f'{width} slide {number} stays aligned with directory', abs(box['x'] - (max(0, (width-1680)/2) + min(48,max(20,width*.03)))) < 1)

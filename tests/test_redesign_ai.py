@@ -216,7 +216,7 @@ class AdapterSafetyTest(unittest.TestCase):
         token=self.token()
         response=self.client.post('/login',data={'csrf_token':token,'email':user.email,'password':'Password123!'})
         self.assertEqual(response.status_code,302)
-        self.assertTrue(response.location.endswith('/citizen/dashboard'))
+        self.assertEqual(response.location, '/')
 
     def test_demo_domain_does_not_bypass_password(self):
         response=self.client.post('/login',data={'csrf_token':self.token(),'email':'missing@sehatwarga.test','password':'incorrect'})

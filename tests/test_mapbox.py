@@ -82,6 +82,8 @@ class MapboxTests(unittest.TestCase):
 
     def test_search_ui_appears_only_with_public_token(self):
         self.assertIn('data-mapbox-directory',self.client.get('/').text)
-        self.assertNotIn('data-mapbox-directory',self.client.get('/facilities').text)
+        self.assertIn('data-mapbox-directory',self.client.get('/facilities').text)
+        self.assertIn('data-place-details',self.client.get('/facilities').text)
+        self.assertNotIn('data-place-details',self.client.get('/').text)
         self.app.config['MAPBOX_PUBLIC_TOKEN']=''
         self.assertNotIn('data-mapbox-directory',self.client.get('/').text)

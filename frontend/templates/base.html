@@ -15,7 +15,7 @@
   <title>{% block title %}SehatWarga — Layanan dalam satu ruang{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/assistant.css') }}">
-  {% if request.endpoint in ['main.index', 'facilities.list_facilities'] %}<link rel="stylesheet" href="{{ url_for('static', filename='css/mapbox-directory.css') }}">{% endif %}
+  {% if request.endpoint in ['main.index', 'facilities.list_facilities', 'facilities.detail_facility'] %}<link rel="stylesheet" href="{{ url_for('static', filename='css/mapbox-directory.css') }}">{% endif %}
   <script type="application/json" id="map-settings">{{ map_settings|tojson }}</script>
   {% if map_settings.configured %}<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.25.0/mapbox-gl.css">{% endif %}
   {% block extra_css %}{% endblock %}
@@ -25,7 +25,7 @@
 
   <header class="navbar">
     <div class="container page-container navbar-container">
-      <a href="{{ url_for('main.index') }}" class="navbar-brand"><img class="site-logo" src="{{ url_for('static', filename='images/sehatwarga-logo.png') }}" width="2172" height="724" alt="SehatWarga — Portal Layanan Warga"></a>
+      <a href="{{ url_for('main.index') }}" class="navbar-brand"><img class="site-logo" src="{{ url_for('static', filename='images/sehatwarga-logo.svg') }}" width="2172" height="724" alt="SehatWarga — Portal Layanan Warga"></a>
       <button type="button" id="nav-toggle" class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Buka menu navigasi">Menu <span aria-hidden="true">☰</span></button>
       <nav id="site-navigation" class="site-navigation" aria-label="Navigasi utama" tabindex="-1">
         <div class="drawer-heading"><strong>Menu SehatWarga</strong><button type="button" id="nav-close" class="btn" aria-label="Tutup menu navigasi">Tutup</button></div>
@@ -93,7 +93,7 @@
   </main>
   <footer class="footer"><div class="container{% if request.endpoint == 'main.index' %} page-container{% endif %} footer-content">
     {% block footer_content %}
-    <a class="footer-brand" href="{{ url_for('main.index') }}"><img class="site-logo" src="{{ url_for('static', filename='images/sehatwarga-logo.png') }}" width="2172" height="724" alt="SehatWarga — Portal Layanan Warga" loading="lazy"></a><span>Prototype akademik independen.</span>
+    <a class="footer-brand" href="{{ url_for('main.index') }}"><img class="site-logo" src="{{ url_for('static', filename='images/sehatwarga-logo.svg') }}" width="2172" height="724" alt="SehatWarga — Portal Layanan Warga" loading="lazy"></a><span>Prototype akademik independen.</span>
     <p class="footer-disclaimer">Bukan situs resmi BPJS atau lembaga pemerintah. Pembayaran dan layanan merupakan simulasi.</p>
     {% if request.endpoint != 'assistant.chat_page' %}<a href="{{ url_for('assistant.chat_page') }}" class="assistant-floating-btn" aria-label="Buka Asisten SehatWarga">Bantuan Asisten <span aria-hidden="true">↗</span></a>{% endif %}
     {% endblock %}

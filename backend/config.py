@@ -14,6 +14,7 @@ class Config:
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAX_CONTENT_LENGTH = int(os.environ.get("MAX_CONTENT_LENGTH", 5 * 1024 * 1024))  # 5 MB
+    GOOGLE_PLACES_BROWSER_KEY = os.environ.get("GOOGLE_PLACES_BROWSER_KEY", "")
     MAPBOX_PUBLIC_TOKEN = os.environ.get("MAPBOX_PUBLIC_TOKEN", "")
     AI_PROVIDER = os.environ.get("AI_PROVIDER", "fallback")
     AI_API_KEY = os.environ.get("AI_API_KEY", "")

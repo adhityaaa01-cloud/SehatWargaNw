@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% set service_slides = [
-  ('family', 'Kepesertaan & keluarga', 'Kelola identitas, periksa informasi kepesertaan, dan atur data anggota keluarga melalui satu portal.', 'citizen.family_list', '01-kepesertaan-keluarga.png'),
-  ('service', 'Pengajuan layanan', 'Ajukan layanan kesehatan, lengkapi persyaratan, dan pantau perkembangan pengajuan Anda.', 'citizen.service_requests_list', '02-pengajuan-layanan.png'),
-  ('payment', 'Iuran & pembayaran', 'Periksa informasi tagihan dan pantau pembayaran simulasi melalui portal SehatWarga.', 'citizen.contributions_list', '03-iuran-pembayaran.png'),
-  ('complaint', 'Pengaduan', 'Sampaikan kendala pelayanan dan pantau tanggapan dari petugas melalui sistem pengaduan.', 'citizen.complaints_list', '04-pengaduan.png')
+  ('family', 'Kepesertaan & keluarga', 'Kelola identitas, periksa informasi kepesertaan, dan atur data anggota keluarga melalui satu portal.', 'citizen.family_list', '01-kepesertaan-keluarga.svg'),
+  ('service', 'Pengajuan layanan', 'Ajukan layanan kesehatan, lengkapi persyaratan, dan pantau perkembangan pengajuan Anda.', 'citizen.service_requests_list', '02-pengajuan-layanan.svg'),
+  ('payment', 'Iuran & pembayaran', 'Periksa informasi tagihan dan pantau pembayaran simulasi melalui portal SehatWarga.', 'citizen.contributions_list', '03-iuran-pembayaran.svg'),
+  ('complaint', 'Pengaduan', 'Sampaikan kendala pelayanan dan pantau tanggapan dari petugas melalui sistem pengaduan.', 'citizen.complaints_list', '04-pengaduan.svg')
 ] %}
 {% block title %}SehatWarga — Kelola layanan kesehatan Anda{% endblock %}
 {% block content %}
@@ -48,22 +48,9 @@
 </div></div>
 <p class="sr-only" role="status" aria-live="polite" data-showcase-status></p>
 </div></div></section></div>
-<section class="landing-facilities" id="direktori" aria-labelledby="directory-heading"><div class="container page-container directory-container">
-{% if map_settings.configured %}
+<section class="landing-facilities" id="direktori" aria-labelledby="mapbox-heading"><div class="container page-container directory-container">
 {% include 'public/facilities/_mapbox_search.html' %}
-<details><summary>Fasilitas terdaftar untuk layanan simulasi SehatWarga</summary>
-{% endif %}
-<div class="directory-search-intro"><p class="eyebrow">DIREKTORI FASILITAS</p><h2 id="directory-heading">Temukan fasilitas sesuai kebutuhan</h2><p class="muted">Cari puskesmas, klinik, atau rumah sakit berdasarkan nama dan kota.</p>
-<form action="{{ url_for('facilities.list_facilities') }}" method="get" class="directory-search" id="home-directory-form"><div class="form-group mb-0"><label for="home-search">Nama fasilitas atau kota</label><input class="form-control" id="home-search" name="search" placeholder="Contoh: Bandung"></div><button class="btn btn-primary" type="submit">Cari Fasilitas</button></form>
-<p class="small muted">Katalog fasilitas terdaftar untuk layanan simulasi SehatWarga.</p></div>
-<div class="directory-results" data-directory-url="{{ url_for('facilities.list_facilities') }}">
-<div class="directory-results-header"><div class="directory-results-intro"><h2>Lokasi fasilitas yang tersedia</h2>
-<p id="directory-feedback" role="status" class="directory-feedback">Buka direktori lengkap untuk melihat fasilitas yang tersedia.</p>
-<a href="{{ url_for('facilities.list_facilities') }}" class="text-link">Buka direktori lengkap →</a></div>
-<nav class="directory-types" aria-label="Filter jenis fasilitas">{% for code,label in [('', 'Semua'),('HOSPITAL','Rumah Sakit'),('PUSKESMAS','Puskesmas'),('CLINIC','Klinik')] %}<a class="btn btn-outline-primary" href="{{ url_for('facilities.list_facilities', facility_type=code) }}" data-facility-type="{{ code }}"{% if not code %} aria-current="true"{% endif %}>{{ label }}</a>{% endfor %}</nav></div>
-<div id="directory-cards" class="facility-grid"></div><div id="directory-pagination"></div><div id="directory-map-slot"></div>
-<p class="small muted">Informasi fasilitas merupakan data simulasi akademik SehatWarga.</p>
-</div>{% if map_settings.configured %}</details>{% endif %}</div></section>
+</div></section>
 <div class="healthcare-journey">
 <section id="informasi" class="journey-stage" aria-labelledby="journey-heading"><div class="page-container journey-container">
 <p class="eyebrow">PANDUAN PENGGUNAAN</p><h2 id="journey-heading">Mulai dalam tiga langkah</h2>
@@ -78,10 +65,10 @@
 {% endblock %}
 
 {% block extra_css %}{% for icon,title,desc,endpoint,background in service_slides %}<link rel="preload" as="image" href="{{ url_for('static', filename='images/services-3d/' ~ background) }}">{% endfor %}{% endblock %}
-{% block extra_js %}<script defer src="{{ url_for('static', filename='js/mapbox-directory.js') }}"></script><script defer src="{{ url_for('static', filename='js/service-showcase.js') }}"></script><script defer src="{{ url_for('static', filename='js/facility-map.js') }}"></script><script defer src="{{ url_for('static', filename='js/home-directory.js') }}"></script>{% endblock %}
+{% block extra_js %}<script defer src="{{ url_for('static', filename='js/mapbox-directory.js') }}"></script><script defer src="{{ url_for('static', filename='js/service-showcase.js') }}"></script><script defer src="{{ url_for('static', filename='js/facility-map.js') }}"></script>{% endblock %}
 
 {% block footer_content %}
-<div class="landing-footer-grid"><div class="landing-footer-identity"><a class="landing-footer-brand" href="{{ url_for('main.index') }}"><img class="site-logo" src="{{ url_for('static', filename='images/sehatwarga-logo.png') }}" width="2172" height="724" alt="SehatWarga — Portal Layanan Warga" loading="lazy"></a><p>Portal administrasi layanan kesehatan masyarakat.</p><p class="small">Prototipe akademik independen.</p></div>
+<div class="landing-footer-grid"><div class="landing-footer-identity"><a class="landing-footer-brand" href="{{ url_for('main.index') }}"><img class="site-logo" src="{{ url_for('static', filename='images/sehatwarga-logo.svg') }}" width="2172" height="724" alt="SehatWarga — Portal Layanan Warga" loading="lazy"></a><p>Portal administrasi layanan kesehatan masyarakat.</p><p class="small">Prototipe akademik independen.</p></div>
 <nav aria-label="Jelajahi SehatWarga"><h2>Jelajahi</h2><a href="{{ url_for('main.index') }}#layanan">Layanan SehatWarga</a><a href="{{ url_for('facilities.list_facilities') }}">Fasilitas Kesehatan</a><a href="{{ url_for('main.index') }}#tentang-kami">Tentang Kami</a></nav>
 <nav aria-label="Panduan dan bantuan"><h2>Panduan & bantuan</h2><a href="{{ url_for('main.index') }}#informasi">Panduan penggunaan</a><a href="{{ url_for('citizen.complaints_list') }}">Pengaduan layanan</a></nav>
 <nav aria-label="Akses portal"><h2>Akses portal</h2>{% if current_user.is_authenticated %}<a href="{{ url_for('admin.dashboard') if is_admin else url_for('citizen.dashboard') }}">Dashboard</a>{% else %}<a href="{{ url_for('auth.login') }}">Masuk ke Portal</a><a href="{{ url_for('auth.register') }}">Daftar akun</a>{% endif %}</nav></div>

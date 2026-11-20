@@ -58,3 +58,24 @@
   .mapbox-result-hint { display:none; }.mapbox-result-heading { font-size:16px; }
   .mapbox-workspace { grid-template-columns:1fr; gap:12px; }.mapbox-map-panel { height:300px; order:-1; }.mapbox-result-list { height:330px; padding-right:4px; }
 }
+
+/* Directions stay below the map so they never cover the selected route. */
+.facility-route { margin-top:18px; padding:20px; border:1px solid #cbdedb; border-radius:14px; background:#fff; color:#18394a; overflow-wrap:anywhere; }
+.facility-route[hidden],.facility-route [hidden] { display:none !important; }
+.facility-route h3 { margin:0 0 8px; font-size:20px; line-height:1.4; }
+.facility-route-summary { margin:0 0 16px; font-size:18px; font-weight:600; line-height:1.5; }
+.facility-route-controls { display:flex; align-items:flex-end; flex-wrap:wrap; gap:12px; }
+.facility-route-controls label { display:flex; flex-direction:column; gap:6px; font-size:15px; font-weight:600; }
+.facility-route-controls select { min-height:44px; padding:8px 32px 8px 12px; border:1px solid #bcd0cd; border-radius:8px; background:white; color:#18394a; font:inherit; font-size:16px; }
+.facility-route-controls .btn { min-height:44px; white-space:normal; text-align:center; font-size:16px; }
+.facility-route-note { margin:14px 0 0; color:#526a75; font-size:14px; line-height:1.6; }
+@media(max-width:767px) { .facility-route { padding:16px; }.facility-route-controls { align-items:stretch; flex-direction:column; }.facility-route-controls select { width:100%; } }
+
+.facility-guidance { margin-top: 16px; }
+.facility-guidance-text:not(:empty) { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+[data-place-details] dl { display:grid; grid-template-columns:max-content 1fr; gap:.35rem 1rem; margin:1rem 0; }
+[data-place-details] dt { font-weight:600; }
+[data-place-details] dd { margin:0; }
+[data-place-details] h4 { margin:1.25rem 0 .4rem; }
+[data-place-details] a { text-decoration:underline; }
+[data-google-info]:not(:empty) { margin-top:.75rem; }

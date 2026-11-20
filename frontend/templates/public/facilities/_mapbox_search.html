@@ -15,11 +15,31 @@
       </label>{% endfor %}
     </fieldset>
   </form>
-  <div class="mapbox-result-heading"><p role="status" aria-live="polite" data-mapbox-status>Memuat fasilitas di Lamongan…</p><span class="mapbox-result-hint">Pilih fasilitas untuk melihat lokasinya</span></div>
+  <div class="mapbox-result-heading"><p role="status" aria-live="polite" data-mapbox-status>Memuat fasilitas di Lamongan…</p><span class="mapbox-result-hint">Pilih fasilitas untuk melihat {{ "detail dan rute" if show_facility_details else "lokasi dan rute" }}</span></div>
   <div class="mapbox-workspace">
     <div class="mapbox-result-list" data-mapbox-results aria-label="Hasil pencarian fasilitas"><div class="mapbox-empty">Mencari fasilitas kesehatan…</div></div>
     <div class="mapbox-map-panel" data-mapbox-map-wrap><div class="mapbox-map-canvas" data-mapbox-map aria-label="Peta hasil pencarian Mapbox"></div><div class="mapbox-map-placeholder" data-mapbox-placeholder><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Zm6-3v15m6-12v15"/></svg><span>Peta lokasi fasilitas</span></div></div>
   </div>
+  {% if show_facility_details %}
+  <section class="facility-route" data-place-details hidden aria-live="polite">
+    <h3>Detail fasilitas</h3>
+    <strong data-place-name></strong>
+    <dl>
+      <dt>Jenis fasilitas</dt><dd data-place-type></dd>
+      <dt>Alamat</dt><dd data-place-address></dd>
+      <dt>Telepon</dt><dd data-place-phone></dd>
+      <dt>Koordinat</dt><dd data-place-coordinates></dd>
+    </dl>
+    <h4>Layanan dan jadwal poli</h4>
+    <div data-clinic-info></div>
+    <h4>Jam buka dan pengalaman pengunjung</h4>
+    <a data-google-reference target="_blank" rel="noopener noreferrer">Lihat jam buka, rating, dan ulasan di Google Maps ↗</a>
+    <div data-google-info data-key="{{ config.GOOGLE_PLACES_BROWSER_KEY }}"></div>
+  </section>
+  {% endif %}
   <div class="mapbox-directory-footnote"><details><summary>Tentang hasil pencarian</summary><p>Hasil berasal dari pencarian tempat Mapbox. Maksimal 25 hasil kategori atau 10 hasil nama; unit rumah sakit dapat muncul terpisah. Konfirmasi alamat dan layanan langsung ke fasilitas. Hasil ini belum terhubung ke pengajuan layanan simulasi SehatWarga.</p><p data-mapbox-attribution></p></details></div>
 </section>
+{% else %}
+<h2 id="mapbox-heading">Fasilitas Kesehatan</h2>
+<p role="status">Pencarian fasilitas Mapbox belum tersedia.</p>
 {% endif %}
